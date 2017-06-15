@@ -1,7 +1,7 @@
 //Bare bones server intialization.
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
-let port = PROCESS.ENV.PORT || 3000;
+let port = process.env.PORT || 3000;
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
