@@ -13,18 +13,20 @@ var session = require('express-session')
 //Require if modular code is put in helper:
 //var helper = require('./helpers/helper');
 
+
+const app = express()
+
+const db = require('./db')
+
 //enabling various cookie /session /flash functionality! <('.')>
-app.use(express.cookieParser());
-app.use(express.session({secret: 'recurssive raccoon'}));
+app.use(cookieParser());
+app.use(session({secret: 'recursive raccoon'}));
 app.use(flash());
 //passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-const app = express()
-
-const db = require('./db')
 
 //Require all created models:
 var Message = require('./models/message');
@@ -43,9 +45,11 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log('this is the facebook returned profile', profile)
     User.findOne({
       'facebook.id':profile.id
     }, function(err, user) {
