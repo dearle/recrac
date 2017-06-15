@@ -5,9 +5,22 @@ let port = process.env.PORT || 3000;
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
-
+const config = require('./config/config.js')
+//cookie monster's code repos!
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
 //Require if modular code is put in helper:
 //var helper = require('./helpers/helper');
+
+//enabling various cookie /session /flash functionality! <('.')>
+app.use(express.cookieParser());
+app.use(express.session({secret: 'recurssive raccoon'}));
+app.use(flash());
+//passport authentication
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 const app = express()
 
@@ -28,8 +41,8 @@ app.use(express.static(path.resolve(__dirname, './home')))
 //Passport facebook strategy config:
 
 passport.use(new FacebookStrategy({
-    clientID: 123772004874308, //ENV[FACEBOOK_APP_ID]
-    clientSecret: 'e332531c73f223466140121ba1a44f21', //ENV[FACEBOOK_APP_SECRET] 
+    clientID: config.FACEBOOK_APP_ID, 
+    clientSecret:  config.FACEBOOK_APP_SECRET, 
     callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -49,10 +62,10 @@ passport.use(new FacebookStrategy({
         });
         user.save(function(err) {
           if (err) console.error(err);
-          return done(err, user)
+          return done(null, user)
         })
       } else {
-        return done(err, user);
+        return done(null, user);
       }
     })
   }
@@ -67,7 +80,9 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
+                                      failureRedirect: '/login',
+                                      failureFlash: true,
+                                      successFlash: 'Welcome!' }));
 
 
 app.get('/history', function(req, res) {
