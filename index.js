@@ -58,10 +58,11 @@ passport.use(new FacebookStrategy({
         return done(error)
       }
       if (!user) {
+        console.log("new user created");
         user = new User({
           user: profile.displayName,
-          picture: profile.photos[0],
-          email: profile.emails[0],
+          picture: profile.photos[0].value,
+          email: profile.email,
           facebook: profile._json
         });
         user.save(function(err) {
@@ -69,6 +70,7 @@ passport.use(new FacebookStrategy({
           return done(null, user)
         })
       } else {
+        console.log('user found')
         return done(null, user);
       }
     })
@@ -85,11 +87,13 @@ passport.use(new FacebookStrategy({
 // example does not have a database, the complete Facebook profile is serialized
 // and deserialized.
 passport.serializeUser(function(user, done) {
+  console.log("serialize user: ", user);
   done(null, user.facebook.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findOne({'facebook.id':profile.id}, function(err, user) {
+  console.log('deserialize id :', id);
+  User.findOne({'facebook.id':id}, function(err, user) {
     done(err, user);
   });
 });
