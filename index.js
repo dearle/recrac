@@ -1,6 +1,7 @@
 //Bare bones server intialization.
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
+let port = process.env.PORT || 3000;
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -98,5 +99,5 @@ app.post('/message', function(req, res) {
 
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment
-app.listen(3000)
+app.listen(port)
 console.log('Greenfield server running on :3000');
