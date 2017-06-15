@@ -1,5 +1,6 @@
 //Bare bones server intialization.
-
+var passport = require('passport')
+  , FacebookStrategy = require('passport-facebook').Strategy;
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -23,9 +24,50 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, './node_modules')))
 app.use(express.static(path.resolve(__dirname, './home')))
 
+//Passport facebook strategy config:
+
+passport.use(new FacebookStrategy({
+    clientID: 123772004874308, //ENV[FACEBOOK_APP_ID]
+    clientSecret: 'e332531c73f223466140121ba1a44f21', //ENV[FACEBOOK_APP_SECRET] 
+    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOne({
+      'facebook.id':profile.id
+    }, function(err, user) {
+      if (err) {
+        console.error(err)
+        return done(error)
+      }
+      if (!user) {
+        user = new User({
+          user: profile.displayName,
+          picture: profile.photos[0],
+          email: profile.emails[0],
+          facebook: profile._json
+        });
+        user.save(function(err) {
+          if (err) console.error(err);
+          return done(err, user)
+        })
+      } else {
+        return done(err, user);
+      }
+    })
+  }
+))    
 
 
 //Get and post methods should be delegated to routes.js file to simplify and modularize
+// Redirect the user to Facebook for authentication.  When complete,
+// Facebook will redirect the user back to the application at
+//     /auth/facebook/callback || index
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
+
 
 app.get('/history', function(req, res) {
   Message.find({}).exec(function(err, links) {
