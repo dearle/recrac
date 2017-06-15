@@ -7,10 +7,10 @@ var Promise = require('bluebird');
 var userSchema = new mongoose.Schema({
   user: String,
   password: String,
-  //GRIDFS to store picture:
   picture: String,
-  
+  email: String,
   number: String,
+  facebook: String,
   hostedEvents: String,
   joinedEvents: String,
   rating: Number
