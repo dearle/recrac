@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
   picture: String,
   email: String,
   number: String,
-  facebook: String,
+  facebook: Object,
   hostedEvents: String,
   joinedEvents: String,
   rating: Number
