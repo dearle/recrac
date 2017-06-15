@@ -13,18 +13,20 @@ var session = require('express-session')
 //Require if modular code is put in helper:
 //var helper = require('./helpers/helper');
 
+
+const app = express()
+
+const db = require('./db')
+
 //enabling various cookie /session /flash functionality! <('.')>
-app.use(express.cookieParser());
-app.use(express.session({secret: 'recurssive raccoon'}));
+app.use(cookieParser());
+app.use(session({secret: 'recursive raccoon'}));
 app.use(flash());
 //passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-const app = express()
-
-const db = require('./db')
 
 //Require all created models:
 var Message = require('./models/message');
@@ -43,9 +45,11 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log('this is the facebook returned profile', profile)
     User.findOne({
       'facebook.id':profile.id
     }, function(err, user) {
@@ -54,10 +58,11 @@ passport.use(new FacebookStrategy({
         return done(error)
       }
       if (!user) {
+        console.log("new user created");
         user = new User({
           user: profile.displayName,
-          picture: profile.photos[0],
-          email: profile.emails[0],
+          picture: profile.photos[0].value,
+          email: profile.email,
           facebook: profile._json
         });
         user.save(function(err) {
@@ -65,12 +70,33 @@ passport.use(new FacebookStrategy({
           return done(null, user)
         })
       } else {
+        console.log('user found')
         return done(null, user);
       }
     })
   }
 ))    
 
+// Configure Passport authenticated session persistence.
+//
+// In order to restore authentication state across HTTP requests, Passport needs
+// to serialize users into and deserialize users out of the session.  In a
+// production-quality application, this would typically be as simple as
+// supplying the user ID when serializing, and querying the user record by ID
+// from the database when deserializing.  However, due to the fact that this
+// example does not have a database, the complete Facebook profile is serialized
+// and deserialized.
+passport.serializeUser(function(user, done) {
+  console.log("serialize user: ", user);
+  done(null, user.facebook.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  console.log('deserialize id :', id);
+  User.findOne({'facebook.id':id}, function(err, user) {
+    done(err, user);
+  });
+});
 
 //Get and post methods should be delegated to routes.js file to simplify and modularize
 // Redirect the user to Facebook for authentication.  When complete,
@@ -116,3 +142,4 @@ app.post('/message', function(req, res) {
 //Server init to listen on port 3000 -> Needs to be altered for deployment
 app.listen(port)
 console.log('Greenfield server running on :3000');
+//here is a change.
