@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="utf-8">
+    <title>Greenfield</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+
+    
+    <script src="./app.js"></script>
+    <script src="./services/fetch-service.js"></script>
+    <script src="./directives/history-directive.js"></script>
+
+  </head>
+  <body>
+    <h1>Greenfield</h1>
+
+    <a ui-sref="history">Change Template</a>
+
+    <!-- This is where ui-router template info will be inserted into page -->
+    <ui-view></ui-view>
+  </body>
+</html>
