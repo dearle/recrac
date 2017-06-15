@@ -13,6 +13,8 @@ const db = require('./db')
 
 //Require all created models:
 var Message = require('./models/message');
+var User = require('./models/user');
+var Event = require('./models/event');
 
 // Middleware to parse body:
 app.use(bodyParser.json());
