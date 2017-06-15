@@ -46,6 +46,7 @@ passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
     callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback",
+
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
