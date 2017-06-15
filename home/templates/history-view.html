@@ -1,0 +1,7 @@
+<h3>Message Histroy</h3>
+	<ul ng-repeat="message in ctrl.messages">
+		<li><p><strong>Sender: </strong> {{message.user}} <strong>Destination: </strong> {{message.number}} </p>
+		<p><strong>Message:</strong> {{message.text}}</p>
+		<p><strong>Modified Message:</strong> {{message.modtext}}</p>
+		</li>
+	</ul>
