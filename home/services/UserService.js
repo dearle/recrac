@@ -23,7 +23,7 @@ angular.module('App', ['ui.router'])
         return $http.get("/logout")
           .then(function(response) {
             console.log('logout success', reponse)
-            res.redirect('/login');
+            //res.redirect('/login');
           })
       }
     }
