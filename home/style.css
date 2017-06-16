@@ -1,3 +1,45 @@
 html, body {
   font-family: sans-serif;
 }
+
+p {
+  margin-bottom: 0;
+}
+
+.demo-layout-transparent {
+  background: url('../assets/demos/transparent.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+.logo {
+  font-family: futura;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.demo-card-square.mdl-card {
+  width: calc(33.333% - 20px);
+  height: 320px;
+  float: left;
+  margin: 0 10px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+}
+.mdl-card {
+  float:left;
+}
+.event-detail{
+  padding-left: 10px;
+}
+.small-hearts {
+  zoom: .5;
+  color: #bb5d5d;
+}
+
