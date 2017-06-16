@@ -1,49 +1,94 @@
-//Bare bones server intialization.
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
-let port = process.env.PORT || 3000;
+                             ///////////////////////////
+                            // Server intialization. //
+                           ///////////////////////////
+
+ 
+ /////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// Requirements //////////////////////////////////////
+
+
+// Basic requirements for express and to indicate paths
 const express = require('express')
 const path = require('path')
+
+// Middleware to produce response bodies
 const bodyParser = require('body-parser');
-const config = require('./config/config.js')
-//cookie monster's code repos!
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser')
-var session = require('express-session')
-//Require if modular code is put in helper:
-//var helper = require('./helpers/helper');
 
+// Needed for facebook passport authentication
+const passport = require('passport');
+const facebookStrategy = require('passport-facebook').Strategy;
 
-const app = express()
+// Needed to instantiate sessions and parse them for use
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
+// Includes the use of flash text to inform user of success or failure of action
+const flash = require('connect-flash');
+
+// Includes all required API keys and variables required for use of said API's
+const config = require('./config/config.js');
+
+// Includes and calls database initialization
 const db = require('./db')
 
-//enabling various cookie /session /flash functionality! <('.')>
-app.use(cookieParser());
-app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
-app.use(flash());
+// Require if modular code is put in helper:
+// Includes helpers that modularize our code
+//const helper = require('./helpers/helper');
 
-//passport authentication
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-
-//Require all created models:
+// Includes all our models for our database to make use of
 var Message = require('./models/message');
 var User = require('./models/user');
 var Event = require('./models/event');
 
-// Middleware to parse body:
+// Creates a variable which holds the port being used either the one given by Cloud Application Platform 
+// (Heroku) through an environment variable or local 3000
+const port = process.env.PORT || 3000;
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Create Server + Run middleware //////////////////////////////// 
+
+
+// Initialize our express server called app
+const app = express()
+
+// Initialize cookie parser to parse session data and cookies must happen before initializing session
+app.use(cookieParser());
+
+// Initialize session data:
+  // Secret is used to hash the session so that it can't be hijacked
+  // Resave set to true prevents session from being deleted at the wrong time
+  // SaveUnitialized set to false will prevent empty/unauthenticated sessions from being saved
+app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: false}));
+
+//passport authentication///////////////////////////////Not sure
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Intializing the flash middleware to attach to sessions (fb and express) and flash messages to user
+// at success or failure of authentication actions 
+app.use(flash());
+
+// Middleware to parse body such that request.body can be used to parse request objects
+// arriving from the client side 
 app.use(bodyParser.json());
 
-//Paths to look for files to import (can have many):
-app.use(express.static(path.resolve(__dirname, './node_modules')))
+//Paths to look for files to import, connect and load to the server (can have many/more than one)
 app.use(express.static(path.resolve(__dirname, './home')))
+
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 //Passport facebook strategy config:
 
-passport.use(new FacebookStrategy({
+passport.use(new facebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
     callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback",
