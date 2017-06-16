@@ -1,5 +1,5 @@
 // An Angular service that talks to Express
-angular.module('App', ['ui.router'])
+angular.module('App')
   .service('ParseService', function ($http) {
     var CurrentUser = null;
     return {
@@ -23,7 +23,7 @@ angular.module('App', ['ui.router'])
         return $http.get("/logout")
           .then(function(response) {
             console.log('logout success', reponse)
-            res.redirect('/login');
+            //res.redirect('/login');
           })
       }
     }
