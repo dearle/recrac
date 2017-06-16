@@ -78,10 +78,13 @@
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
-          <nav class="mdl-navigation">
+            <a >Login </a>
+
+              <nav class="mdl-navigation">
             <a class="mdl-navigation__link home-link" href="">Home</a>
             <a class="mdl-navigation__link dashboard-link" href="">Dashboard</a>
-            <a class="mdl-navigation__link dashboard-link" href="">Login</a>
+            <a class="mdl-navigation__link dashboard-link" ui-sref="login">Login</a>
+            <a ui-sref="history">Change Template</a>
             <a class="mdl-navigation__link dashboard-link" href="">Logout</a>
           </nav>
         </div>
@@ -96,7 +99,7 @@
           <a class="mdl-navigation__link dashboard-link" href="">Logout</a>
         </nav>
       </div>
-
+<ui-view>
     <!-- main content -->
       <main class="mdl-layout__content">
         <div layout="row" style="background:#e4e4e4;">
@@ -202,17 +205,15 @@
         </div>
       </main>
     </div>
-
+</ui-view>
 <!-- 
 
   <body>
     <h1>Greenfield</h1>
 -->
-    <a ui-sref="login">Login </a>
-
-    <a ui-sref="history">Change Template</a>
+  
 
     <!-- This is where ui-router template info will be inserted into page -->
-    <ui-view></ui-view>
+    
   </body>
 </html>

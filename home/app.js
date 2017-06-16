@@ -1,24 +1,24 @@
 angular.module('App', ['ui.router'])
- .controller('MainController', function ($scope, ParseService) {
-        ParseService.login().then(function loginSuccess(_loggedInUser) {
-            // called when successful...
-            // logged in and we have a user object
-            alert("User Logged In " + _loggedInUser.username);
+//  .controller('MainController', function ($scope, ParseService) {
+//         ParseService.login().then(function loginSuccess(_loggedInUser) {
+//             // called when successful...
+//             // logged in and we have a user object
+//             alert("User Logged In " + _loggedInUser.username);
 
-        }, function error(_error) {
-            // if error occurred anywhere above, this code will
-            // be executed
-            alert("ERROR " + _error);
-        })
-     })   
-.config(function CheckForAuthenticatedUser(ParseService, $state) {
-    return ParseService.getCurrentUser().then(function(_user) {
-      return _user;
-    }, function(_error) {
-      $state.go('login');
-    })
-  })
- .config(function($stateProvider) { 
+//         }, function error(_error) {
+//             // if error occurred anywhere above, this code will
+//             // be executed
+//             alert("ERROR " + _error);
+//         })
+//      })   
+// .config(function CheckForAuthenticatedUser(ParseService, $state) {
+//     return ParseService.getCurrentUser().then(function(_user) {
+//       return _user;
+//     }, function(_error) {
+//       $state.go('login');
+//     })
+//   })
+ .config(function($stateProvider, $urlRouterProvider) { 
   $stateProvider
     .state({
       name: 'history',
@@ -37,23 +37,23 @@ angular.module('App', ['ui.router'])
     template:'<login-directive/>'
 
   })
-  .state('app', {
-    url: '/app',
-    template: '<app-directive/>',
-    abstract: true,
-    resolve: {
-      resolvedUser: checkForAuthenticatedUser
-    }
-  })
-  .state('app.home', {
-    url: "/home",
-    template: '<app-directive/>',
-    resolve: {
-      CurrentUser: function(resolvedUser){
-        return resolvedUser;
-      }
-    }
-  })
+  // .state('app', {
+  //   url: '/app',
+  //   template: '<app-directive/>',
+  //   abstract: true,
+  //   resolve: {
+  //     resolvedUser: checkForAuthenticatedUser
+  //   }
+  // })
+  // .state('app.home', {
+  //   url: "/home",
+  //   template: '<home-directive/>',
+  //   resolve: {
+  //     CurrentUser: function(resolvedUser){
+  //       return resolvedUser;
+  //     }
+  //   }
+  // })
 })
 
 //function that runs everytime the route changes. 

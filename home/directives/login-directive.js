@@ -1,13 +1,10 @@
 angular.module('App')
 
-.controller('loginCtrl', function(auth) {
-    this.login = auth;
-})
-
 .directive('loginDirective', function() {
   return {
     scope: {},
     restrict: 'E',
+    controller: function() {},
     controllerAs: 'loginCtrl',
     bindToController: true,
     templateUrl: '../templates/login.html'
