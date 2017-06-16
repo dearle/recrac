@@ -1,13 +1,12 @@
 angular.module('App', ['ui.router'])
-.config(
-  function CheckForAuthenticatedUser(ParseService, $state) {
+.config(function CheckForAuthenticatedUser(ParseService, $state) {
     return ParseService.getCurrentUser().then(function(_user) {
       return _user;
     }, function(_error) {
       $state.go('login');
     })
-  }
- function($stateProvider) { 
+  })
+ .config(function($stateProvider) { 
   $stateProvider
     .state({
       name: 'history',
