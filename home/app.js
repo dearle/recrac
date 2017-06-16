@@ -10,7 +10,7 @@ angular.module('App', ['ui.router'])
       //  // messages: function (FetchService) {
       //  //  return FetchService.getMessages();
       // }
-    }
+    //}
   })
   .state({
     name: 'login',
