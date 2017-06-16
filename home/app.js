@@ -1,5 +1,17 @@
 angular.module('App', ['ui.router'])
-.config(function CheckForAuthenticatedUser($state) {
+ .controller('MainController', function ($scope, ParseService) {
+        ParseService.login().then(function loginSuccess(_loggedInUser) {
+            // called when successful...
+            // logged in and we have a user object
+            alert("User Logged In " + _loggedInUser.username);
+
+        }, function error(_error) {
+            // if error occurred anywhere above, this code will
+            // be executed
+            alert("ERROR " + _error);
+        })
+     })   
+.config(function CheckForAuthenticatedUser(ParseService, $state) {
     return ParseService.getCurrentUser().then(function(_user) {
       return _user;
     }, function(_error) {
