@@ -22,6 +22,7 @@ const db = require('./db')
 app.use(cookieParser());
 app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
 app.use(flash());
+
 //passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
@@ -113,10 +114,14 @@ app.get('/login', function(req, res) {
   res.render('login');
   });
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
+  passport.authenticate('facebook', { successRedirect: '/home',
                                       failureRedirect: '/login',
                                       failureFlash: true,
                                       successFlash: 'Welcome!' }));
