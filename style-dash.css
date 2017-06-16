@@ -1,0 +1,25 @@
+.user-block{
+  margin-top: 100px;
+  float: left;
+  width: 376px;
+  bottom: 0;
+  align-self: baseline;
+  background: white;
+  padding: 20px;
+}
+.user-text{
+  float: left;
+  margin-top: 10px;
+  width: calc(100% - 50px);
+}
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  background: url('http://i.imgur.com/2e7bwno.jpg');
+  background-size: cover;
+  float: left;
+}
+
+.username {
+  font-weight: bold;
+}
