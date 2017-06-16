@@ -1,5 +1,12 @@
 angular.module('App', ['ui.router'])
 .config(function($stateProvider) {
+  function CheckForAuthenticatedUser(ParseService, $state) {
+    return ParseService.getCurrentUser().then(function(_user) {
+      return _user;
+    }, function(_error) {
+      $state.go('login');
+    })
+  }
   $stateProvider
     .state({
       name: 'history',
@@ -18,13 +25,22 @@ angular.module('App', ['ui.router'])
     template:'<login-directive/>'
 
   })
-  .state({
-    name: 'home',
-    url: '/',
-    template: '<app-directive/>'
+  .state('app', {
+    url: '/app',
+    template: '<app-directive/>',
+    abstract: true,
+    resolve: {
+      resolvedUser: checkForAuthenticatedUser
+    }
   })
-  .state({
-
+  .state('app.home', {
+    url: "/home",
+    template: '<app-directive/>',
+    resolve: {
+      CurrentUser: function(resolvedUser){
+        return resolvedUser;
+      }
+    }
   })
 })
 
