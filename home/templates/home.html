@@ -1,4 +1,28 @@
-<h1>Welcome Home, {ctrl.user.name} <h1>
+
+    <div class="mdl-layout mdl-js-layout">
+      <!-- MAIN CONTENT -->
+      <main class="mdl-layout__content">
+
+        <h1>Welcome Home, {ctrl.user.name} <h1>
   <div>
     <img ng-src={{ctrl.user.photo}} />
   </div>
+
+
+        <!-- CREATE EVENT ROW -->
+        <div layout="row" style="background:#e4e4e4;">
+          <div class="mdl-layout__header-row">
+            <span class="mdl-layout__title">Create Event</span>
+          </div>
+        </div>
+
+        <!-- EVENT CARD ROW -->
+        <div layout="row" style="background:#e4e4e4;">
+          <div class="mdl-layout__header-row">
+            <span class="mdl-layout__title">Awesome Events</span>
+          </div>
+        </div>
+
+      </main>
+    </div>
+    
