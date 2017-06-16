@@ -110,27 +110,23 @@ app.get('/', require('connect-ensure-login').ensureLoggedIn(),
   res.render('home', {user: req.user});
 });
 
-app.get('/login', function(req, res) {
-  res.render('login');
-  });
-
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/home',
                                       failureRedirect: '/login',
-                                      failureFlash: true,
-                                      successFlash: 'Welcome!' }));
+                                      }));
 
-app.get('/events', 
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('events', { user: req.user});
-  } )
+// app.get('/events', 
+//   ,//middleware that checks if req.user
+//   function(req, res){
+//     //query the db for user data and return it
+  // } )
 
 app.get('/history', function(req, res) {
   Message.find({}).exec(function(err, links) {

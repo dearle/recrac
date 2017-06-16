@@ -1,5 +1,5 @@
 // An Angular service that talks to Express
-angular.module('App', ['ui.router'])
+angular.module('App')
   .service('ParseService', function ($http) {
     var CurrentUser = null;
     return {
