@@ -20,7 +20,7 @@ const db = require('./db')
 
 //enabling various cookie /session /flash functionality! <('.')>
 app.use(cookieParser());
-app.use(session({secret: 'recursive raccoon'}));
+app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
 app.use(flash());
 //passport authentication
 app.use(passport.initialize());
@@ -45,7 +45,8 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback",
+
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -102,6 +103,16 @@ passport.deserializeUser(function(id, done) {
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback || index
+
+app.get('/', require('connect-ensure-login').ensureLoggedIn(),
+  function (req, res) {
+  res.render('home', {user: req.user});
+});
+
+app.get('/login', function(req, res) {
+  res.render('login');
+  });
+
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
@@ -110,6 +121,11 @@ app.get('/auth/facebook/callback',
                                       failureFlash: true,
                                       successFlash: 'Welcome!' }));
 
+app.get('/events', 
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('events', { user: req.user});
+  } )
 
 app.get('/history', function(req, res) {
   Message.find({}).exec(function(err, links) {
