@@ -37,24 +37,43 @@ angular.module('App', ['ui.router'])
     template:'<login-directive/>'
 
   })
-  // .state('app', {
-  //   url: '/app',
-  //   template: '<app-directive/>',
-  //   abstract: true,
-  //   resolve: {
-  //     resolvedUser: checkForAuthenticatedUser
-  //   }
-  // })
-  // .state('app.home', {
-  //   url: "/home",
-  //   template: '<home-directive/>',
-  //   resolve: {
-  //     CurrentUser: function(resolvedUser){
-  //       return resolvedUser;
-  //     }
-  //   }
-  // })
+  .state('app', {
+    url: '/app',
+    templateUrl: './templates/app.home.html',
+    abstract: true,
+    // resolve: {
+    //   resolvedUser: checkForAuthenticatedUser
+    // }
+  })
+  .state('app.home', {
+    url: "/home",
+    templateUrl: './templates/app.home.html',
+    // resolve: {
+    //   CurrentUser: function(resolvedUser){
+    //     return resolvedUser;
+    //   }
+    // }
+  })
+  .state('app.dash', {
+    url: "/dashboard",
+    templateUrl: './templates/app.dash.html'
+  })
 })
+
+// angular.module('App')
+// .directive('appDirective', function() {
+//   return {
+//     scope: {
+//         user: '<'
+//     },
+//     restrict: 'E',
+//     controller: function() {},
+//     controllerAs: 'ctrl',
+//     bindToController: true,
+//     templateUrl: '../templates/home.html'
+//   };
+// });
+
 
 //function that runs everytime the route changes. 
 
