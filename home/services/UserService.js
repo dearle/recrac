@@ -1,10 +1,7 @@
 // An Angular service that talks to Express
-UserService.$inject = ['$http', '$state']; 
-
-function UserService($http, $state) {
-
-    this.loginUser = function (user) {
-      $http.post("/auth/facebook", user)
+angular.module('App', ['ui.router']).
+factory('auth', ['$http', '$state', function(user) {
+  $http.post("/auth/facebook", user)
         .success(function (data, status) {
           console.log('Successful login.');
           console.log('data = ' + data); 
@@ -15,4 +12,4 @@ function UserService($http, $state) {
           console.log('Error: ' + data);
           $state.go('login'); 
       });
-  }; 
+}]);
