@@ -20,7 +20,7 @@ const db = require('./db')
 
 //enabling various cookie /session /flash functionality! <('.')>
 app.use(cookieParser());
-app.use(session({secret: 'recursive raccoon'}));
+app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true;}));
 app.use(flash());
 //passport authentication
 app.use(passport.initialize());
@@ -103,6 +103,16 @@ passport.deserializeUser(function(id, done) {
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback || index
+
+app.get('/', require('connect-ensure-login').ensureLoggedIn(),
+  function (req, res) {
+  res.render('home', {user: req.user});
+};
+
+app.get('/login', function(req, res) {
+  res.render('login');
+  });
+
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
@@ -111,6 +121,11 @@ app.get('/auth/facebook/callback',
                                       failureFlash: true,
                                       successFlash: 'Welcome!' }));
 
+app.get('/events', 
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('events', { user: req.user});
+  } )
 
 app.get('/history', function(req, res) {
   Message.find({}).exec(function(err, links) {
