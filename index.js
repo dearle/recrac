@@ -20,7 +20,7 @@ const db = require('./db')
 
 //enabling various cookie /session /flash functionality! <('.')>
 app.use(cookieParser());
-app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true;}));
+app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
 app.use(flash());
 //passport authentication
 app.use(passport.initialize());
@@ -107,7 +107,7 @@ passport.deserializeUser(function(id, done) {
 app.get('/', require('connect-ensure-login').ensureLoggedIn(),
   function (req, res) {
   res.render('home', {user: req.user});
-};
+});
 
 app.get('/login', function(req, res) {
   res.render('login');
