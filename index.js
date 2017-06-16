@@ -21,13 +21,13 @@ const db = require('./db')
 //enabling various cookie /session /flash functionality! <('.')>
 app.use(cookieParser());
 app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
-app.use(flash());
+
 
 //passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use(flash());
 
 //Require all created models:
 var Message = require('./models/message');
@@ -118,7 +118,7 @@ app.get('/logout', function(req, res){
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/home',
+  passport.authenticate('facebook', { successRedirect: '/home',//status.go
                                       failureRedirect: '/login',
                                       }));
 
