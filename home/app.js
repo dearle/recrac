@@ -15,12 +15,12 @@ angular.module('App', ['ui.router'])
   .state({
     name: 'login',
     url: '/login',
-    template:'./templates/login.html'
+    templateUrl:'./templates/login.html'
 
   })
   .state({
     name: 'home',
     url: '/',
-    template: './templates/index.html'
+    templateUrl: './templates/index.html'
   })
 })
