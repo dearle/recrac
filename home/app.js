@@ -4,7 +4,7 @@ angular.module('App', ['ui.router'])
     .state({
       name: 'history',
       url: '/history',
-      template: '<history-directive ></history-directive>',
+      template: '<history-directive></history-directive>',
       // messages="$resolve.messages"
       //resolve: {
       //  // messages: function (FetchService) {
@@ -15,12 +15,19 @@ angular.module('App', ['ui.router'])
   .state({
     name: 'login',
     url: '/login',
-    templateUrl:'./templates/login.html'
+    template:'<login-directive/>'
 
   })
   .state({
     name: 'home',
     url: '/',
-    templateUrl: './templates/index.html'
+    template: '<app-directive/>'
+  })
+  .state({
+
   })
 })
+
+//function that runs everytime the route changes. 
+
+//lifecycle hooks that you can attach the callback to. onRouteChangeStart callback. 
