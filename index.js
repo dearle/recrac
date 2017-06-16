@@ -110,10 +110,6 @@ app.get('/', require('connect-ensure-login').ensureLoggedIn(),
   res.render('home', {user: req.user});
 });
 
-app.get('/login', function(req, res) {
-  res.render('login');
-  });
-
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
