@@ -5,7 +5,7 @@ var eventSchema = new mongoose.Schema({
   description: String,
   host: String,
   type: String,
-  //Set up geolocation data
+  loc: { type: String, coordinates: [Number] },
   location: Number,
 
 
