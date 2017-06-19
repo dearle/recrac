@@ -1,7 +1,7 @@
 //Bare bones server intialization.
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
-let port = process.env.PORT || 3000;
+const passport = require('passport');
+const FacebookStrategy = require('passport-facebook').Strategy;
+const port = process.env.PORT || 3000;
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -20,14 +20,14 @@ const db = require('./db')
 
 //enabling various cookie /session /flash functionality! <('.')>
 app.use(cookieParser());
-app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: true}));
-app.use(flash());
+app.use(session({secret: 'recursive raccoon', resave: true, saveUninitialized: false}));
+
 
 //passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use(flash());
 
 //Require all created models:
 var Message = require('./models/message');
@@ -46,8 +46,7 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback",
-
+    callbackURL: "http://localhost.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -57,7 +56,7 @@ passport.use(new FacebookStrategy({
     }, function(err, user) {
       if (err) {
         console.error(err)
-        return done(error)
+        return done(err)
       }
       if (!user) {
         console.log("new user created");
@@ -105,20 +104,10 @@ passport.deserializeUser(function(id, done) {
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback || index
 
-app.get('/', require('connect-ensure-login').ensureLoggedIn(),
-  function (req, res) {
-  res.render('home', {user: req.user});
-});
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/home',
+  passport.authenticate('facebook', { successRedirect: '/home', // $state.go('login');
                                       failureRedirect: '/login',
                                       }));
 
@@ -126,34 +115,7 @@ app.get('/auth/facebook/callback',
 //   ,//middleware that checks if req.user
 //   function(req, res){
 //     //query the db for user data and return it
-  // } )
-
-app.get('/history', function(req, res) {
-  Message.find({}).exec(function(err, links) {
-    if(err){
-    	res.status(500).send(err);
-    }
-    	res.status(200).send(links);
-  });
-
-})
-
-app.post('/message', function(req, res) {
-  var newMessage = new Message({
-  	user: 'Dwho',
-  	text: req.body.text,
-    mod: req.body.mod,
-    modtext: helper.alterText(req.body.text, req.body.mod),
-    number: req.body.number
-  });
-  newMessage.save(function(err, newMessage) {
-  	if (err) {
-        res.status(500).send(err);
-    } else {
-        res.status(200).send(newMessage);
-    }
-  });
-})
+//   } )
 
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment

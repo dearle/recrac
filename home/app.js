@@ -1,23 +1,11 @@
-angular.module('App', ['ui.router'])
-//  .controller('MainController', function ($scope, ParseService) {
-//         ParseService.login().then(function loginSuccess(_loggedInUser) {
-//             // called when successful...
-//             // logged in and we have a user object
-//             alert("User Logged In " + _loggedInUser.username);
-
-//         }, function error(_error) {
-//             // if error occurred anywhere above, this code will
-//             // be executed
-//             alert("ERROR " + _error);
-//         })
-//      })   
-// .config(function CheckForAuthenticatedUser(ParseService, $state) {
-//     return ParseService.getCurrentUser().then(function(_user) {
-//       return _user;
-//     }, function(_error) {
-//       $state.go('login');
-//     })
-//   })
+angular.module('App', ['Appblah.Services', 'ui.router'])
+.config(function CheckForAuthenticatedUser(ParseService, $state) {
+    return ParseService.getCurrentUser().then(function(_user) {
+      return _user;
+    }, function(_error) {
+      $state.go('login');
+    })
+  })
  .config(function($stateProvider, $urlRouterProvider) { 
   $stateProvider
     .state({
@@ -41,38 +29,24 @@ angular.module('App', ['ui.router'])
     url: '/app',
     templateUrl: './templates/app.home.html',
     abstract: true,
-    // resolve: {
-    //   resolvedUser: checkForAuthenticatedUser
-    // }
+    resolve: {
+      resolvedUser: checkForAuthenticatedUser
+    }
   })
   .state('app.home', {
     url: "/home",
     templateUrl: './templates/app.home.html',
-    // resolve: {
-    //   CurrentUser: function(resolvedUser){
-    //     return resolvedUser;
-    //   }
-    // }
+    resolve: {
+      CurrentUser: function(resolvedUser){
+        return resolvedUser;
+      }
+    }
   })
   .state('app.dash', {
     url: "/dashboard",
     templateUrl: './templates/app.dash.html'
   })
 })
-
-// angular.module('App')
-// .directive('appDirective', function() {
-//   return {
-//     scope: {
-//         user: '<'
-//     },
-//     restrict: 'E',
-//     controller: function() {},
-//     controllerAs: 'ctrl',
-//     bindToController: true,
-//     templateUrl: '../templates/home.html'
-//   };
-// });
 
 
 //function that runs everytime the route changes. 

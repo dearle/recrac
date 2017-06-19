@@ -1,6 +1,6 @@
 // An Angular service that talks to Express
-angular.module('App')
-  .service('ParseService', function ($http) {
+angular.module('Appblah.Services', [])
+  .service('ParseService', function ($http, $q) {
     var CurrentUser = null;
     return {
       login: function login() {
