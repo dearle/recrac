@@ -1,13 +1,13 @@
 angular.module('App')
 .directive('dashDirective', function() {
   return {
-    scope: {
-        user: '<'
-    },
+    scope: {},
     restrict: 'E',
-    controller: function() {},
-    controllerAs: 'ctrl',
-    bindToController: true,
+    controller: function ($scope, userService) {
+      userService
+        .authenticate()
+        .then(function (user) { $scope.user = user });
+    },
     templateUrl: '../templates/dash.html'
   };
 });

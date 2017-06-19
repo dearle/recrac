@@ -1,24 +1,11 @@
 
 <form>
 <h1>Login</h1>
-
+<input ng-model="user.isAuthenticated" type="checkbox" />
 
 <form>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label group">      
-    <input class="mdl-textfield__input" type="text" required>
-    <label class="mdl-textfield__label">Name</label>
-  </div>
-  </br>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label group">      
-    <input class="mdl-textfield__input" type="text" required>
-    <label class="mdl-textfield__label">Email</label>
-  </div>
-  </br></br>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple login-button"><a href="/auth/facebook">Login</a></button>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple register-button" style="margin-left: 5px"><a href="/auth/facebook">Register</a></button>
-  </br></br>
   </br>Social Login:</br></br>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple login-fb-button"><a href="/auth/facebook">Login with Facebook</a></button>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple login-fb-button"><a href="/auth/facebook" target="_self">Login with Facebook</a>
 </form>
 
 

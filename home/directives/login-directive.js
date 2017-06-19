@@ -4,9 +4,11 @@ angular.module('App')
   return {
     scope: {},
     restrict: 'E',
-    controller: function() {},
-    controllerAs: 'loginCtrl',
-    bindToController: true,
+    controller: function ($scope, userService) {
+      userService
+        .authenticate()
+        .then(function (user) { $scope.user = user });
+    },
     templateUrl: '../templates/login.html'
   };
 });

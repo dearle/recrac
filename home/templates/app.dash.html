@@ -10,7 +10,8 @@
         	</div>
         	<div class="user-text">
         		<div class="username">
-        		<p><b>Username</b></p>
+        		<p><b>{{user}}</b></p>
+            <img ng-src="{{user.data.user.picture}}"/>
 
         		</div>            		
         		<div class="user-description">
@@ -20,6 +21,8 @@
         		<div class="user-location">
         			<b>Location</b>
         			<p>Hack Reactor NY</p>
+              <p><b>{{user.data.user.user}}</b></p>
+              <p><img ng-src="{{user.data.user.picture}}"</p>
         		</div>
         		<div class="user-rating">
         			<b>Rating</b>
