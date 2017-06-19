@@ -111,6 +111,43 @@ app.get('/auth/facebook/callback',
                                       failureRedirect: '/login',
                                       }));
 
+
+//Get and post methods for events on app/home page
+
+//get method needs to be done in page resolve
+app.get('/app/home', function(req, res){
+  Events.find({}).exec(err, events) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(events);
+    }
+  };
+});
+
+//post method is a click event on Add event button
+app.post('/app/home', function(req, res){
+  var newEvent = new Event ({
+    name: req.body.name,
+    description: req.body.description,
+    host: req.body.host,
+    type: req.body.type,
+    time: req.body.time,
+    price: req.body.price || 0,
+    desiredParticipants: req.body.desiredParticipants,
+    //Need help inputing this may need a method to turn adress into coordinates
+    location: "Not sure" 
+  });
+  newEvent.save(function(err, newEvent){
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(newEvent);
+    }
+  })
+});
+
+
 // app.get('/events', 
 //   ,//middleware that checks if req.user
 //   function(req, res){

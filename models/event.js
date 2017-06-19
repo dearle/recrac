@@ -5,10 +5,8 @@ var eventSchema = new mongoose.Schema({
   description: String,
   host: String,
   type: String,
-  loc: { type: String, coordinates: [Number] },
-  location: Number,
-
-
+  location: { type: String, coordinates: [Number] },
+  desiredParticipants: Number,
   time: String,
   price: Number,
   confirmedParticipants: String,
