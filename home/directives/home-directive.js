@@ -1,15 +1,13 @@
 angular.module('App')
 .directive('homeDirective', function() {
   return {
-    scope: {
-        user: '<'
-    },
+    scope: {},
     restrict: 'E',
-    controller: function($scope, $state, $timeout, ParseService, CurrentUser) {
-      
+    controller: function ($scope, userService) {
+      userService
+        .authenticate()
+        .then(function (user) { $scope.user = user });
     },
-    controllerAs: 'homeCtrl',
-    bindToController: true,
     templateUrl: '../templates/home.html'
   };
 });

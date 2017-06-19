@@ -46,7 +46,7 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "http://localhost.com/auth/facebook/callback",
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -62,7 +62,7 @@ passport.use(new FacebookStrategy({
         console.log("new user created");
         user = new User({
           user: profile.displayName,
-          picture: profile.photos[0].value,
+          picture: profile.photos[1].value,
           email: profile.email,
           facebook: profile._json
         });
@@ -103,27 +103,38 @@ passport.deserializeUser(function(id, done) {
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback || index
-
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/home', // $state.go('login');
-                                      failureRedirect: '/login',
-                                      }));
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
+app.get('/account', function(req, res){
+   if (req.isAuthenticated()) { 
+     res.send({user : req.user}); 
+   }else{
+     res.sendStatus(404);
+   }
+ });
+
+app.get('/error', function(req, res) {
+  res.sendStatus(404);
+})
 
 //Get and post methods for events on app/home page
 
 //get method needs to be done in page resolve
-app.get('/app/home', function(req, res){
-  Events.find({}).exec(err, events) {
-    if(err){
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(events);
-    }
-  };
-});
+//app.get('/app/home', function(req, res){
+//   Events.find({}).exec(err, events) {
+//     if(err){
+//       res.status(500).send(err);
+//     } else {
+//       res.status(200).send(events);
+//     }
+//   };
+// });
 
 //post method is a click event on Add event button
 app.post('/app/home', function(req, res){
