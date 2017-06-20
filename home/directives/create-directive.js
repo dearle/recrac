@@ -1,0 +1,44 @@
+angular.module('App')
+
+.directive('createDirective', ['$http', function($http) {
+  return {
+    scope: {},
+    restrict: 'E',
+    controller: function ($scope) {
+      $scope.event = {
+        name: "",
+        description: "",
+        host: "",
+        type: "",
+        location: { type: "", coordinates: 0 },
+        desiredParticipants: 0,
+        time: "",
+        price: 0,
+        confirmedParticipants: "",
+        potentialParticipants: ""
+      }
+
+      var req = {
+       method: 'POST',
+       url: "/app/home",
+       headers: {
+         'Content-Type': "application/json"
+       },
+       data: $scope.event
+      }
+
+      $scope.saveEvent = function() {
+        console.log($scope.event);
+        $http(req).then(function(success, error) {
+          if (error) {
+            console.log(error);
+            return;
+          }
+          console.log(success);
+        })
+      }
+    },
+    templateUrl: '../templates/create.html'
+  };
+}]);
+

@@ -32,6 +32,7 @@ angular.module('App', ['ui.router'])
         .then(function (user) { $scope.user = user });
     }
   })
+
 }) 
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
   $transitions.onStart({ to: 'app.**' }, function(trans) { 

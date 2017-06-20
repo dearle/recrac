@@ -7,34 +7,34 @@
 
 	<!-- EVENT FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
+    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.name">
     <label class="mdl-textfield__label new-event-name" for="sample3">Name of event...</label>
   </div>
 
 
   <!-- LOCATION FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
+    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.location.type">
     <label class="mdl-textfield__label new-event-location" for="sample3">Location...</label>
   </div>
 
 
   <!-- TIME FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
+    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.time">
     <label class="mdl-textfield__label new-event-time" for="sample3">Time...</label>
   </div>
 
 
   <!-- NUMBER OF PEOPLE -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
+    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.desiredParticipants">
     <label class="mdl-textfield__label new-event-slots" for="sample3">Number of people...</label>
   </div>
 
 
   <!-- ADD EVENT BUTTON -->
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="saveEvent()">
     Add Event
   </button>
 
