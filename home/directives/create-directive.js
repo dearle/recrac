@@ -10,7 +10,7 @@ angular.module('App')
         description: "",
         host: "",
         type: "",
-        location: { type: "", coordinates: 0 },
+        location: "",
         desiredParticipants: 0,
         time: "",
         price: 0,
@@ -20,7 +20,7 @@ angular.module('App')
 
       var req = {
        method: 'POST',
-       url: "/app/home",
+       url: "/events",
        headers: {
          'Content-Type': "application/json"
        },

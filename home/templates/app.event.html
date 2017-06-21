@@ -1,0 +1,124 @@
+<!-- navigation -->
+<div class="mdl-layout mdl-js-layout">
+    <div layout="row" class="page-header">
+    </div>
+
+    <!-- EDIT BUTTON -->
+    <div style="margin: 10px;float: right">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect join-button" data-mdc-auto-init="MDCRipple" style="margin:0 auto">Edit Event</button>
+    </div>
+</div>
+
+  <main class="mdl-layout__tab-panel is-active">
+    <div class="mdl-layout__tab-panel is-active" id="overview" style="background: whitesmoke">
+
+      <!-- EVENT TITLE -->
+      <section class="section--center mdl-grid">
+        <h1 style="margin: 0">Puppies in Central Park</h1>
+      </section>
+
+
+      <!-- EVENT INFO -->
+      <section class="section--center mdl-grid mdl-grid--no-spacing" style="margin-bottom: 20px">
+
+        <!-- EVENT DETAILS -->
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="width: calc(66% - 5px);margin-right: 5px;background: white;" >
+          <div style="padding: 20px;">
+            <div class="mdl-card__supporting-text event-details">
+              <h4><b>Event Details</b></h4>
+              <span>Description</span>
+              <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.</p>
+
+              <span>Location</span>
+              <p>Central Park</p>
+
+              <span>Participants</span>
+              <p style="margin: 5px 0 0;"><img ng-src="{{user.data.user.picture}}"/> <img ng-src="{{user.data.user.picture}}"/> <img ng-src="{{user.data.user.picture}}"/></p>
+              <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">And 4 others.</p>
+
+              <span>Time Remaining</span>
+              <p>Central Park</p>
+
+              <span>What to bring</span>
+              <p>BYOB, food, puppy</p>
+            </div>
+            <!-- 
+            <div class="mdl-card__actions">
+              <a href="#" class="mdl-button">Read our features</a>
+            </div>
+             -->
+          </div>
+        </section>
+
+        <!-- EVENT HOST -->
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="width: calc(33.33333% - 5px);margin-left: 5px;background: white;" >
+          <div style="padding: 20px 0;width: 100%;">
+            <div class="mdl-card__supporting-text event-details">
+              <h4><b>Event Host</b></h4>
+              <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
+              </div>
+              <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
+                <span>Name</span>
+                <p>{{user.data.user.user}}</p>
+
+                <span>About Me</span>
+                <p>A little bit about yourself</p>
+
+                <span>Rating</span>
+                <p>&#x2605 &#x2605 &#x2605 &#x2605</p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </section>
+
+
+      <!-- COMMENTS -->
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col">
+          <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+
+            <!-- COMMENT TITLE -->
+            <h4 class="mdl-cell mdl-cell--12-col"><b>Comments</b></h4>
+
+            <!-- ACTUAL COMMENTS  -->
+
+            <!-- COMMENT 1 -->
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
+              <p>{{user.data.user.user}}</p>
+              <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
+            </div>
+
+            <!-- COMMENT 2 -->
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
+              <p>{{user.data.user.user}}</p>
+              <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
+            </div>
+
+
+          </div>
+          <div class="mdl-card__actions">
+            <a href="#" class="mdl-button">Add Comment</a>
+          </div>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+          <li class="mdl-menu__item">Lorem</li>
+          <li class="mdl-menu__item" disabled>Ipsum</li>
+          <li class="mdl-menu__item">Dolor</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+

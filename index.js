@@ -10,6 +10,8 @@ const config = require('./config/config.js')
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
+const request = require('request')
+const geocodeURL = 'http://maps.google.com/maps/api/geocode/json?address='
 //Require if modular code is put in helper:
 //var helper = require('./helpers/helper');
 
@@ -62,7 +64,7 @@ passport.use(new FacebookStrategy({
         console.log("new user created");
         user = new User({
           user: profile.displayName,
-          picture: profile.photos[1].value,
+          picture: profile.photos[0].value,
           email: profile.email,
           facebook: profile._json
         });
@@ -155,6 +157,23 @@ app.post('/app/home', function(req, res){
     } else {
       res.status(200).send(newEvent);
     }
+  })
+});
+
+app.post('/events', function(req, res) {
+  const address = req.body.location;
+  request(geocodeURL + address, function(err, response, body) {
+    req.body.location = JSON.parse(body).results[0].geometry.location
+    req.body.location.address = address
+
+    var newEvent = new Event(req.body);
+    newEvent.save(function(err, event) {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.status(201).json(event);
+      }
+    })
   })
 });
 

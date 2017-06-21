@@ -7,38 +7,51 @@
 
   <!-- EVENT FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.name">
+    <input class="mdl-textfield__input" type="text" id="" ng-model="event.name">
     <label class="mdl-textfield__label new-event-name" for="sample3">Name of event...</label>
   </div>
 
 
   <!-- LOCATION FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.location.type">
-    <label class="mdl-textfield__label new-event-location" for="sample3">Location...</label>
+    <input class="mdl-textfield__input geo-input" ng-autocomplete type="text" id="autocomplete" details='details' ng-model="event.location">
+    <div id="locationField">
+      <label class="mdl-textfield__label new-event-location" for="sample3" on-focus="">Location...</label>
+    </div>
   </div>
 
 
   <!-- TIME FIELD -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.time">
+    <input class="mdl-textfield__input" type="time" id="" ng-model="event.time">
     <label class="mdl-textfield__label new-event-time" for="sample3">Time...</label>
   </div>
 
 
   <!-- NUMBER OF PEOPLE -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3" ng-model="event.desiredParticipants">
+    <input type="number" max="2" class="mdl-textfield__input" ng-model="event.desiredParticipants">
     <label class="mdl-textfield__label new-event-slots" for="sample3">Number of people...</label>
   </div>
 
 
   <!-- ADD EVENT BUTTON -->
+  <br/><br/>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="saveEvent()">
     Add Event
   </button>
-
+  <br/><br/><br/>
 </form> 
 
+<script>
+ // This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+// 
+</script>
 
 <!-- </div> 
