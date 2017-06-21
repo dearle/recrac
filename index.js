@@ -62,7 +62,7 @@ passport.use(new FacebookStrategy({
         console.log("new user created");
         user = new User({
           user: profile.displayName,
-          picture: profile.photos[1].value,
+          picture: profile.photos[0].value,
           email: profile.email,
           facebook: profile._json
         });
