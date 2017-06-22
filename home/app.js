@@ -1,4 +1,4 @@
-angular.module('App', ['ui.router', 'ngAutocomplete'])
+angular.module('App', ['ui.router', 'ngAutocomplete','ui-leaflet' ])
 .config(function($stateProvider, $urlRouterProvider) { 
   $urlRouterProvider.otherwise('/login');
   $stateProvider
@@ -17,11 +17,7 @@ angular.module('App', ['ui.router', 'ngAutocomplete'])
   .state('app.home', {
     url: "/home",
     templateUrl: './templates/app.home.html',
-    controller: function ($scope, userService) {
-      userService
-        .authenticate()
-        .then(function (user) { $scope.user = user });
-    }
+    controller: 'HomeController'
   })
   .state('app.dash', {
     url: "/dashboard",
@@ -43,6 +39,7 @@ angular.module('App', ['ui.router', 'ngAutocomplete'])
   })
 
 }) 
+
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
   $transitions.onStart({ to: 'app.**' }, function(trans) { 
     var auth = trans.injector().get('userService');
@@ -90,11 +87,18 @@ angular.module('App', ['ui.router', 'ngAutocomplete'])
 //           })
 //       }
 })
+.run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
+  $transitions.onStart({ to: 'app.**' }, function(trans) { 
+    var auth = trans.injector().get('userService');
+    if (!auth.isAuthenticated()) { //is the user authenticated?
+      // User isn't authenticated. Redirect to a new Target State
+      return trans.router.stateService.target('login');
+    }
+  });
+})
 .run(
     ['$rootScope', '$state', '$stateParams',
       function ($rootScope, $state, $stateParams) { 
-          console.log("$stateParams = ");
-          console.log($stateParams);
           $rootScope.$state = $state;
           $rootScope.$stateParams = $stateParams;
       }
