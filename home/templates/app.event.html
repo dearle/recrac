@@ -19,10 +19,10 @@
 
 
       <!-- EVENT INFO -->
-      <section class="section--center mdl-grid mdl-grid--no-spacing" style="margin-bottom: 20px">
+      <section class="section--center mdl-grid mdl-grid--no-spacing event-block-container" style="">
 
         <!-- EVENT DETAILS -->
-        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="width: calc(66% - 5px);margin-right: 5px;background: white;" >
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-left" style="" >
           <div style="padding: 20px;">
             <div class="mdl-card__supporting-text event-details">
               <h4><b>Event Details</b></h4>
@@ -51,7 +51,7 @@
         </section>
 
         <!-- EVENT HOST -->
-        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="width: calc(33.33333% - 5px);margin-left: 5px;background: white;" >
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-right" style="" >
           <div style="padding: 20px 0;width: 100%;">
             <div class="mdl-card__supporting-text event-details">
               <h4><b>Event Host</b></h4>
@@ -91,23 +91,27 @@
             </div>
             <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
               <p>{{user.data.user.user}}</p>
+
               <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
             </div>
 
             <!-- COMMENT 2 -->
             <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
+
+              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;">
+              </div>
+
             </div>
             <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
               <p>{{user.data.user.user}}</p>
               <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
             </div>
 
-
           </div>
           <div class="mdl-card__actions">
             <a href="#" class="mdl-button">Add Comment</a>
           </div>
+
         </div>
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
           <i class="material-icons">more_vert</i>

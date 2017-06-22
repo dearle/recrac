@@ -2,8 +2,6 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 //Import bcrypt:
 
-
-
 var userSchema = new mongoose.Schema({
   user: String,
   password: String,
