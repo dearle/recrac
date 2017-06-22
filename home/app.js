@@ -17,7 +17,12 @@ angular.module('App', ['ui.router', 'ngAutocomplete','ui-leaflet' ])
   .state('app.home', {
     url: "/home",
     templateUrl: './templates/app.home.html',
-    controller: 'HomeController'
+    controller: 'HomeController',
+    resolve: {
+      Data: function(mappingTools){
+        return mappingTools.getEvents();
+      }
+    }  
   })
   .state('app.dash', {
     url: "/dashboard",
