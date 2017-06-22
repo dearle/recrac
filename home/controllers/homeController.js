@@ -1,7 +1,7 @@
 angular.module('App').
 controller('HomeController', ['$scope', '$rootScope', 'userService', 'mappingTools', 'Data',
 function ($scope, $rootScope, userService, mappingTools, Data) {
-  
+  var markers = {};
   userService //authentication
     .authenticate()
     .then(function (user) { $scope.user = user });
@@ -18,10 +18,19 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
                 zoom: 12
-            }
+            } 
+      markers['curr'] = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        message: "You are here!",
+        icon: L.icon.glyph({ prefix: 'mdi', glyph: 'my_location'}),
+        focus: true
+      }         
         });
 
-  //$scope.geojson = mappingTools.eventToGeoJson(Data)
-   
+  var markers = mappingTools.eventToMarker(Data);
+ 
+  $scope.markers = markers;
+
 }]);
             
