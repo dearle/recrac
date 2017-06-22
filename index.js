@@ -45,6 +45,7 @@ app.use(express.static(path.resolve(__dirname, './node_modules')))
 
 app.use('/leaflet_scripts', express.static(__dirname + '/node_modules/ui-leaflet/dist'))
 app.use('/ang_logging_scripts', express.static(__dirname + '/node_modules/angular-simple-logger/dist'))
+app.use('/spec', express.static(__dirname + '/spec'))
 
 
 app.use(express.static(path.resolve(__dirname, './home')))

@@ -6,10 +6,10 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
     .authenticate()
     .then(function (user) { $scope.user = user });
 
-  $scope.tiles = mappingTools.defaultTile; //map set up
+  $scope.tiles = mappingTools.defaultTile; //map set up tiles from mapbox
   $scope.defaults = { scrollWheelZoom: false
-                      } //map set up
-  $scope.currentLoc = mappingTools.defaultLoc; //map set up
+                      } //map set up turn off scroll wheel zoom.
+  $scope.currentLoc = mappingTools.defaultLoc; //map set up deault location.
 
 
   mappingTools //get current loc from browser
@@ -19,18 +19,22 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                 lng: position.coords.longitude,
                 zoom: 12
             } 
-      markers['curr'] = {
+      markers['curr'] = { //put a marker down at the curr loc't
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         message: "You are here!",
-        icon: L.icon.glyph({ prefix: 'mdi', glyph: 'my_location'}),
+        icon: {},
+
         focus: true
       }         
         });
 
-  var markers = mappingTools.eventToMarker(Data);
+  var markers = mappingTools.eventToMarker(Data); //get markers from database
  
-  $scope.markers = markers;
+  $scope.markers = markers; //add them to the scope
+  // $scope.markers['curr'].icon = {type: 'awesomeMarker',
+  //                   icon: 'tag',
+  //                   markerColor: 'blue'}
 
 }]);
             
