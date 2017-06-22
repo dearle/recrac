@@ -41,12 +41,6 @@ app.use(bodyParser.json());
 
 //Paths to look for files to import (can have many):
 app.use(express.static(path.resolve(__dirname, './node_modules')))
-//"./node_modules/bootstrap/dist/". Then, the script tag in your pages just looks like this:
-
-app.use('/leaflet_scripts', express.static(__dirname + '/node_modules/ui-leaflet/dist'))
-app.use('/ang_logging_scripts', express.static(__dirname + '/node_modules/angular-simple-logger/dist'))
-app.use('/spec', express.static(__dirname + '/spec'))
-
 
 app.use(express.static(path.resolve(__dirname, './home')))
 

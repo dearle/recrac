@@ -23,7 +23,9 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         message: "You are here!",
-        icon: {},
+        icon: {type: 'awesomeMarker',
+                    icon: 'star',
+                    markerColor: 'white'},
 
         focus: true
       }         
@@ -32,9 +34,6 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
   var markers = mappingTools.eventToMarker(Data); //get markers from database
  
   $scope.markers = markers; //add them to the scope
-  // $scope.markers['curr'].icon = {type: 'awesomeMarker',
-  //                   icon: 'tag',
-  //                   markerColor: 'blue'}
 
 }]);
             
