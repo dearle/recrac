@@ -46,10 +46,10 @@ angular.module('App', ['ui.router', 'ngAutocomplete'])
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
   $transitions.onStart({ to: 'app.**' }, function(trans) { 
     var auth = trans.injector().get('userService');
-    if (!auth.isAuthenticated()) { //is the user authenticated?
-      // User isn't authenticated. Redirect to a new Target State
-      return trans.router.stateService.target('login');
-    }
+    // if (!auth.isAuthenticated()) { //is the user authenticated?
+    //   // User isn't authenticated. Redirect to a new Target State
+    //   return trans.router.stateService.target('login');
+    // }
   });
 })
 .factory('userService', function($q, $http, $timeout) {

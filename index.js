@@ -149,7 +149,7 @@ app.post('/app/home', function(req, res){
     price: req.body.price || 0,
     desiredParticipants: req.body.desiredParticipants,
     //Need help inputing this may need a method to turn adress into coordinates
-    location: "Not sure" 
+    location: req.body.location 
   });
   newEvent.save(function(err, newEvent){
     if (err) {
