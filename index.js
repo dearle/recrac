@@ -41,6 +41,7 @@ app.use(bodyParser.json());
 
 //Paths to look for files to import (can have many):
 app.use(express.static(path.resolve(__dirname, './node_modules')))
+
 app.use(express.static(path.resolve(__dirname, './home')))
 
 //Passport facebook strategy config:
@@ -178,11 +179,12 @@ app.post('/events', function(req, res) {
 });
 
 
-// app.get('/events', 
-//   ,//middleware that checks if req.user
-//   function(req, res){
-//     //query the db for user data and return it
-//   } )
+app.get('/events', function(req, res){
+  Event.find({}, function(err, events) {
+    console.log('success! events gotten', events);
+    res.send(events)
+  })
+})
 
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment

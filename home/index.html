@@ -10,15 +10,27 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places" async defer></script>
 
     <!-- STYLE -->
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="./mdl-custom.css">
     <link rel="stylesheet" href="./style.css">
+   
+    <!-- Mapping Stuff -->
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="/ui-leaflet/dist/ui-leaflet.min.js"></script>
+    <script src="/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+     <link rel="stylesheet" href="/leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+    <script src="/leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
 
     <script src="./app.js"></script>
-    <script src="./services/UserService.js"></script> 
+
     <!-- DIRECTIVES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="./services/mappingTools.js"></script>
+    <script src="./controllers/homeController.js"></script>
     <script src="./directives/app-directive.js"></script>
     <script src="./directives/home-directive.js"></script>
     <script src="./directives/login-directive.js"></script>
@@ -28,6 +40,8 @@
     <script src="./directives/nav-directive.js"></script>
     <script src="./directives/map-autocomplete.js"></script>
     <script src="./directives/card-directive.js"></script>
+
+
   </head>
 
   <body ng-app="App" class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
