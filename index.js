@@ -126,6 +126,12 @@ app.get('/error', function(req, res) {
   res.sendStatus(404);
 })
 
+app.get('/timer', function(req, res) {
+  var id = Number(req.url.split(':').slice(1)); //this should be the url endpoint; 
+  Event.findOne({id: id}).exec(function(err, data) {
+    res.json(200, data);
+  });
+})
 //Get and post methods for events on app/home page
 
 //get method needs to be done in page resolve
