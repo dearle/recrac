@@ -23,9 +23,11 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         message: "You are here!",
-        icon: {type: 'awesomeMarker',
-                    icon: 'star',
-                    markerColor: 'white'},
+        icon: {  type: 'extraMarker',
+                    icon: 'fa-star',
+                    markerColor: '#f00',
+                    prefix: 'fa',
+                    shape: 'circle'},
 
         focus: true
       }         
