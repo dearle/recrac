@@ -1,7 +1,9 @@
 angular.module('App')
 .controller('HomeController', ['$scope', '$rootScope', 'userService', 'mappingTools', 'Data',
+
 function ($scope, $rootScope, userService, mappingTools, Data) {
   var markers = {};
+
   userService //authentication
     .authenticate()
     .then(function (user) { $scope.user = user });
@@ -11,7 +13,6 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                       } //map set up turn off scroll wheel zoom.
   $scope.currentLoc = mappingTools.defaultLoc; //map set up deault location.
 
-
   mappingTools //get current loc from browser
     .getCurrentPosition().then((position) => {
       $scope.currentLoc = {
@@ -19,6 +20,7 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                 lng: position.coords.longitude,
                 zoom: 12
             } 
+
       markers['curr'] = { //put a marker down at the curr loc't
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -28,7 +30,6 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                     markerColor: '#f00',
                     prefix: 'fa',
                     shape: 'circle'},
-
         focus: true
       }         
         });
