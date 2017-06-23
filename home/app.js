@@ -33,6 +33,7 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         .then(function (user) { $scope.user = user });
     }
   })
+  // backed up just in case
   .state('app.event', {
     url: "/events",
     templateUrl: './templates/app.event.html',
@@ -42,6 +43,17 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         .then(function (user) { $scope.user = user });
     }
   })
+  // .state('app.event', {
+  //   url: "/events/:eventID",
+  //   templateUrl: './templates/app.event.html',
+  //   controller: function ($scope, $stateParams, userService, Event) {
+  //     $scope.id = $stateParams.id;
+  //     userService
+  //       .authenticate()
+  //       .then(function (user) { $scope.user = user });
+  //   }
+  // })
+
 
 }) 
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 

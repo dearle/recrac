@@ -26,7 +26,7 @@ angular.module('App')
        },
        data: $scope.event
       }
-
+      alert("test");
       $scope.saveEvent = function() {
         console.log($scope.event);
         $http(req).then(function(success, error) {

@@ -136,19 +136,7 @@ app.get('/timer', function(req, res) {
 })
 //Get and post methods for events on app/home page
 
-//get method needs to be done in page resolve
-//app.get('/app/home', function(req, res){
-//   Events.find({}).exec(err, events) {
-//     if(err){
-//       res.status(500).send(err);
-//     } else {
-//       res.status(200).send(events);
-//     }
-//   };
-// });
-
-//post method is a click event on Add event button
-app.post('/app/home', function(req, res){
+app.post('/events', function(req, res){
   var newEvent = new Event ({
     name: req.body.name,
     description: req.body.description,
@@ -158,7 +146,7 @@ app.post('/app/home', function(req, res){
     price: req.body.price || 0,
     desiredParticipants: req.body.desiredParticipants,
     //Need help inputing this may need a method to turn adress into coordinates
-    location: req.body.location 
+    location: req.body.location
   });
   newEvent.save(function(err, newEvent){
     if (err) {
@@ -178,6 +166,6 @@ app.get('/events', function(req, res){
 
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment
-app.listen(port)
+app.listen(port);
 console.log('Greenfield server running on :3000');
 //here is a change.
