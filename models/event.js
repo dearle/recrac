@@ -12,6 +12,7 @@ var eventSchema = new mongoose.Schema({
   price: Number,
   confirmedParticipants: String,
   potentialParticipants: String
-});
+},
+{ timestamps: { createdAt: 'created_at' }});
 
 module.exports = mongoose.model('Event', eventSchema);
