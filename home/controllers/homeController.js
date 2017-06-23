@@ -1,7 +1,7 @@
 angular.module('App')
-.controller('HomeController', ['$scope', '$rootScope', '$state','userService', 'mappingTools', 'Data',
+.controller('HomeController', ['$scope', '$rootScope', '$state','userService', 'searchServices', 'mappingTools', 'Data',
 
-function ($scope, $rootScope, $state, userService, mappingTools, Data) {
+function ($scope, $rootScope, $state, userService, searchServices, mappingTools, Data) {
   var markers = {};
 
   userService //authentication
@@ -38,10 +38,14 @@ function ($scope, $rootScope, $state, userService, mappingTools, Data) {
   
   $scope.eventData = Data;
 
-  $scope.filters = {};
+  $scope.filterObj = searchServices.filterObj;
+
+  $scope.filterByType = searchServices.filterByType;
+
+  $scope.nofilter = searchServices.nofilter;
+
 
   $scope.openEventDetails = function(eventId) {
     $state.go("app.event", {eventId: eventId});
   };
-
 }])
