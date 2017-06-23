@@ -10,8 +10,6 @@ const config = require('./config/config.js')
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
-const request = require('request')
-const geocodeURL = 'http://maps.google.com/maps/api/geocode/json?address='
 //Require if modular code is put in helper:
 //var helper = require('./helpers/helper');
 
@@ -50,7 +48,7 @@ passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
     callbackURL: "http://localhost:3000/auth/facebook/callback",
-    profileFields: ['id', 'displayName', 'photos', 'email']
+    profileFields: ['id', 'displayName', 'photos', 'emails']
   },
   function(accessToken, refreshToken, profile, done) {
     console.log('this is the facebook returned profile', profile)
@@ -66,7 +64,7 @@ passport.use(new FacebookStrategy({
         user = new User({
           user: profile.displayName,
           picture: profile.photos[0].value,
-          email: profile.email,
+          email: profile.emails[0].value,
           facebook: profile._json
         });
         user.save(function(err) {
@@ -91,7 +89,7 @@ passport.use(new FacebookStrategy({
 // example does not have a database, the complete Facebook profile is serialized
 // and deserialized.
 passport.serializeUser(function(user, done) {
-  console.log("serialize user: ", user);
+  console.log("serialize user: ", user.user);
   done(null, user.facebook.id);
 });
 
@@ -106,13 +104,17 @@ passport.deserializeUser(function(id, done) {
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback || index
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
+
+
+
+
 
 app.get('/account', function(req, res){
    if (req.isAuthenticated()) { 
@@ -166,24 +168,6 @@ app.post('/app/home', function(req, res){
     }
   })
 });
-
-app.post('/events', function(req, res) {
-  const address = req.body.location;
-  request(geocodeURL + address, function(err, response, body) {
-    req.body.location = JSON.parse(body).results[0].geometry.location
-    req.body.location.address = address
-
-    var newEvent = new Event(req.body);
-    newEvent.save(function(err, event) {
-      if (err) {
-        res.status(500).json(err);
-      } else {
-        res.status(201).json(event);
-      }
-    })
-  })
-});
-
 
 app.get('/events', function(req, res){
   Event.find({}, function(err, events) {
