@@ -9,4 +9,3 @@ angular.module('App')
     templateUrl: '../templates/card.html'
   };
 }]);
-

@@ -1,38 +1,23 @@
 <ui-view>
     <!-- main content -->
-      <main class="mdl-layout__content">
-        <div layout="row" style="background:#e4e4e4;">
-    <!-- form -->
-          </br>
-          <div class="mdl-layout__header-row">
-            <span class="mdl-layout__title">Create Event</span>
-            <div class="mdl-layout-spacer"></div>
+      <main class="">
+
+          <search-directive></search-directive>
+          <!-- MAP lives in lealet tags.  --> 
+          <leaflet lf-center="currentLoc" markers="markers" tiles="tiles" defaults="defaults" width="100%" height="480px"></leaflet>
+
+          <div class="" style="text-align: center">
+            <h1>Awesome Events</h1>
           </div>
 
-
-          <div class="page-content" style="padding: 0 40px 0 80px;">
-            <create-directive> </create-directive>
+          <div class='md-padding' layout="row" ng-controller="CardController" style="text-align: center; padding: 16px 90px 16px 70px;">
+            <div layout="row" flex layout-wrap >
+              <div class="parent" layout="column" ng-repeat="user in users" flex="33" flex-sm="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+                <card-directive ></card-directive>
+              </div>
+            </div>
           </div>
 
-
-        </div>
-       <!-- MAP lives in lealet tags.  --> 
-        <leaflet lf-center="currentLoc" markers="markers" tiles="tiles" defaults="defaults" width="100%" height="480px"></leaflet>
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout__title">Awesome Events</span>
-        </div>
-        <!-- spacer -->
-        <div class="mdl-layout-spacer"></div>
-
-        <div layout="row" style="padding: 0 70px 0 70px;">
-
-          <!-- card 1 -->
-          <card-directive></card-directive>
-     
-        </div>
-
-        <div layout="row" style="padding: 0 70px 0 70px; height: 300px">
-        </div>
       </main>
     </div>
 

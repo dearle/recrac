@@ -1,57 +1,84 @@
-<!-- <div class="page-content" style="padding: 0 40px 0 80px;">  -->
+<md-dialog aria-label="Create (Form)">
+  <div>
+  <!-- Each text field has its own div.. cuz effects -->
+
+    <div>
+    <h1 style="font-size: 2em; margin-left: 35px;">Create an event</h1>
+      <div layout="column" ng-cloak class="md-inline-form">
+        <md-content layout-gt-sm="row" layout-padding style="padding: 25px;">
+          <form name="eventForm">
+            <!-- EVENT FIELD -->
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                  <label class="new-event-name" placeholder="Name of event">Name of event</label>
+                  <input class="" type="text" id="" ng-model="event.name" required>
+              </md-input-container>
+
+              <!-- LOCATION FIELD -->
+              <md-input-container class="md-block" flex-gt-sm>
+                <div id="locationField" layout-gt-sm="row">
+                  <label class="new-event-location" on-focus="">Location</label>
+                </div>
+                <input class="geo-input" ng-autocomplete type="text" id="autocomplete" details='details' ng-model="event.location" placeholder="" required>
+              </md-input-container>
+            </div>
+
+            <!-- TIME FIELD -->
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label class="new-event-time">Time...</label>
+                <input class="" type="time" id="" ng-model="event.time" required>
+              </md-input-container>
 
 
+              <!-- NUMBER OF PEOPLE -->
+              <md-input-container class="md-block" flex-gt-sm>
+              <label class="new-event-time">Number of people</label>
+                <input type="number" minlength="1" maxlength="20" ng-pattern="/0-9/" class="" ng-model="event.desiredParticipants" required>
+                <!-- 
+                <div ng-message="required">
+                  You need to include people!
+                </div>
 
-<!-- Each text field has its own div.. cuz effects -->
-<form>
+                <div ng-message="min">
+                  There needs to be at least 1 person.
+                </div>
 
-  <!-- EVENT FIELD -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="" ng-model="event.name">
-    <label class="mdl-textfield__label new-event-name" for="sample3">Name of event...</label>
+                <div ng-message="pattern">
+                  Numbers only.
+                </div>
+
+                <div ng-message="max">
+                  You have too many people.
+                </div>
+                 -->
+              </md-input-container>
+            </div>
+            <!-- Description -->
+            <md-input-container class="md-block">
+              <label class="new-event-slots">Description</label>
+              <input type="text" class="" ng-model="event.description">
+            </md-input-container>
+
+            
+
+          </form>
+        </md-content>
+      </div>
+    </div> 
+
+  
+
+    <md-dialog-actions layout="row" style="padding: 10px 0;">
+      <md-button ng-click="">
+        Cancel
+      </md-button>
+      <span flex></span>
+      <!-- ADD EVENT BUTTON -->
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">
+        Add Event
+      </button>
+      
+    </md-dialog-actions>
   </div>
-
-
-  <!-- LOCATION FIELD -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input geo-input" ng-autocomplete type="text" id="autocomplete" details='details' ng-model="event.location">
-    <div id="locationField">
-      <label class="mdl-textfield__label new-event-location" for="sample3" on-focus="">Location...</label>
-    </div>
-  </div>
-
-
-  <!-- TIME FIELD -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="time" id="" ng-model="event.time">
-    <label class="mdl-textfield__label new-event-time" for="sample3">Time...</label>
-  </div>
-
-
-  <!-- NUMBER OF PEOPLE -->
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input type="number" max="2" class="mdl-textfield__input" ng-model="event.desiredParticipants">
-    <label class="mdl-textfield__label new-event-slots" for="sample3">Number of people...</label>
-  </div>
-
-
-  <!-- ADD EVENT BUTTON -->
-  <br/><br/>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="saveEvent()">
-    Add Event
-  </button>
-  <br/><br/><br/>
-</form> 
-
-<script>
- // This example displays an address form, using the autocomplete feature
-// of the Google Places API to help users fill in the information.
-
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-// 
-</script>
-
-<!-- </div> 
+</md-dialog>

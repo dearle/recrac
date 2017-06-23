@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -6,6 +6,13 @@ html, body {
 
 p {
   margin-bottom: 0;
+}*/
+
+h1 {
+    font-family: "Futura","Helvetica";
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: -.05em;
 }
 
 .custom-nav{
@@ -17,23 +24,38 @@ p {
   transition-property: max-height,box-shadow;
 }
 
-.demo-layout-transparent {
+/*.demo-layout-transparent {
   background: url('../assets/demos/transparent.jpg') center / cover;
-}
+}*/
 
-.demo-card-square.mdl-card {
+/*.demo-card-square.mdl-card {
   width: calc(33.333% - 20px);
   height: 320px;
   float: left;
   margin: 0 10px;
 }
+
 .demo-card-square > .mdl-card__title {
   color: #fff;
   background:
     url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
 }
+
 .mdl-card {
   float:left;
+}
+*/
+
+.search-box {
+  min-height: 155px;
+  width: 100%;
+  padding: 40px 70px;
+}
+
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
 }
 
 .mdl-textfield__label {
@@ -43,11 +65,6 @@ p {
 .event-detail{
   padding-left: 10px;
 }
-.small-hearts {
-  zoom: .5;
-  color: #bb5d5d;
-}
-
 
 .page-header{
   background: url("http://i.imgur.com/BnplV4x.jpg");
@@ -84,12 +101,6 @@ p {
 }
 
 
-.logo {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif!important;
-  font-size: 1.4em!important;
-  font-weight: 700!important;
-}
-
 .event-details span {
     font-weight: bold;
 }
@@ -99,3 +110,79 @@ p {
     margin-bottom: 10px;
 }
 
+.nav-account {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.logo {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif!important;
+  font-size: 1.4em!important;
+  font-weight: 700!important;
+}
+
+/*login*/
+
+#nav-account-options {
+  background: #84c9de;
+  border: 3px white solid;
+  width: 35px;
+  height: 35px;
+}
+
+#nav-account-options:hover {
+  border-color: rgb(255,64,129);
+}
+
+.login-group {
+  display: table-row;
+}
+
+.login-form {
+  width: 300px;
+  /*background: bisque;*/
+  padding: 20px;
+  margin: 50px 0;
+  text-align: center;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif!important;
+}
+
+.login-form a {
+  background: rgb(255,64,129);
+  padding: 10px 20px;
+  color: white;
+}
+
+.login-form ul {
+  padding-left: 0;
+}
+
+.login-form ul li {
+  list-style: none;
+  padding: 0 0 20px;
+}
+
+.div-padding{
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+  width: 50%;
+}
+
+.mdl-layout__drawer.is-visible {
+    z-index: 1001;
+}
+
+md-input-container.md-input-focused label {
+  display: none
+}
+
+.card-text {
+  margin: 20px!important;
+  text-align: left;margin: 20px;
+}
+
+.card-text p {
+  margin: 0;
+}

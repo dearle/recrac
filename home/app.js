@@ -1,4 +1,4 @@
-angular.module('App', ['ui.router', 'ngAutocomplete','ui-leaflet' ])
+angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAutocomplete', 'ui-leaflet' ])
 .config(function($stateProvider, $urlRouterProvider) { 
   $urlRouterProvider.otherwise('/login');
   $stateProvider
@@ -108,3 +108,16 @@ angular.module('App', ['ui.router', 'ngAutocomplete','ui-leaflet' ])
           $rootScope.$stateParams = $stateParams;
       }
     ])
+
+
+
+
+
+  // .config(function ($mdThemingProvider) {
+  //   $mdThemingProvider.theme('red')
+  //     .primaryPalette('red');
+
+  //   $mdThemingProvider.theme('blue')
+  //     .primaryPalette('blue');
+  // })
+
