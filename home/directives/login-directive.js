@@ -1,5 +1,4 @@
 angular.module('App')
-
 .directive('loginDirective', function() {
   return {
     scope: {},

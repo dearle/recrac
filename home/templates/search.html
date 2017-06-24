@@ -5,27 +5,15 @@
       <span class="mdl-layout__title">Search Event</span>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" style="width: 100%" id="">
-        <!-- <label class="mdl-textfield__label">Name of event...</label> -->
       </div>
 
       <div>
-        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">
-        Potlucks
-        </md-checkbox>
-        <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">
-        Jobs
-        </md-checkbox>
-        <md-checkbox ng-model="data.cb3" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">
-        Services
-        </md-checkbox>
+        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">Potlucks</md-checkbox>
+        <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">Jobs</md-checkbox>
+        <md-checkbox ng-model="data.cb3" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">Services</md-checkbox>
       </div>
 
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="saveEvent()">
-        Filter
-      </button>
-
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="saveEvent()">Filter</button>
     </div>
-
-
   </div>
 </div>

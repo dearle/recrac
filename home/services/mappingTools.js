@@ -57,11 +57,11 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
     var Markers = {};
 
     data.forEach(function(point) { //for each event create new marker w/ message
-
-      var message = new Message(point.name, point.location.address, point.description);
-      var marker = new Marker(point.location.lat, point.location.lng, message.message);
-    
-      Markers[point.name] = marker
+      if (point.location) {
+        var message = new Message(point.name, point.location.address, point.description);
+        var marker = new Marker(point.location.lat, point.location.lng, message.message);
+        Markers[point.name] = marker
+      }
     })
     
     return Markers

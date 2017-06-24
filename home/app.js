@@ -2,13 +2,13 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
 .config(function($stateProvider, $urlRouterProvider) { 
   $urlRouterProvider.otherwise('/login');
   $stateProvider
-  //public state:
-    .state({
-      name: 'login',
-      url: '/login',
-      template:'<login-directive/>'
-    })
-    //prive states:
+  //Public state:
+  .state({
+    name: 'login',
+    url: '/login',
+    template:'<login-directive/>'
+  })
+  //Private states:
   .state('app', {
     url: '/app',
     templateUrl: './templates/app.home.html',
@@ -34,16 +34,15 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
     }
   })
   .state('app.event', {
-    url: "/events",
+    url: "/events/:eventId",
     templateUrl: './templates/app.event.html',
-    controller: function ($scope, userService) {
-      userService
-        .authenticate()
-        .then(function (user) { $scope.user = user });
+    controller: function ($scope, $stateParams, userService) {
+      $scope.id = $stateParams.eventId;
     }
   })
+})
 
-}) 
+
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
   $transitions.onStart({ to: 'app.**' }, function(trans) { 
     var auth = trans.injector().get('userService');
@@ -53,6 +52,8 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
     }
   });
 })
+
+
 .factory('userService', function($q, $http, $timeout) {
   var user = undefined; //our user object. 
 
@@ -91,6 +92,8 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
 //           })
 //       }
 })
+
+
 .run(
     ['$rootScope', '$state', '$stateParams',
       function ($rootScope, $state, $stateParams) { 
@@ -99,11 +102,4 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
       }
     ])
 
-  // .config(function ($mdThemingProvider) {
-  //   $mdThemingProvider.theme('red')
-  //     .primaryPalette('red');
-
-  //   $mdThemingProvider.theme('blue')
-  //     .primaryPalette('blue');
-  // })
 
