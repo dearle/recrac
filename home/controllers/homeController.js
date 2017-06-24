@@ -48,4 +48,5 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
   $scope.openEventDetails = function(eventId) {
     $state.go("app.event", {eventId: eventId});
   };
+
 }])
