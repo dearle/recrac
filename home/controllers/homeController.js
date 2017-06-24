@@ -40,4 +40,6 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
   
   $scope.eventData = Data;
 
+  $scope.filters = {}
+
 }])
