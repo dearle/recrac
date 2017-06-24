@@ -94,7 +94,6 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  console.log('deserialize id :', id);
   User.findOne({'facebook.id':id}, function(err, user) {
     done(err, user);
   });
@@ -128,9 +127,9 @@ app.get('/error', function(req, res) {
   res.sendStatus(404);
 })
 
-app.get('/timer', function(req, res) {
-  var id = Number(req.url.split(':').slice(1)); //this should be the url endpoint; 
-  Event.findOne({id: id}).exec(function(err, data) {
+app.get('/timer/:id', function(req, res) {
+  var id = req.param.id;
+  ObjectId(id).getTimestamp().exec(function(err, data) { //Event.findOne({id: id})
     res.json(200, data);
   });
 })

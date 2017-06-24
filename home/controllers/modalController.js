@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('CreateModal', function($scope, $mdDialog, $interval) {
+.controller('CreateModal', function($scope, $mdDialog, $interval, userService) {
 
   $scope.showAdvanced = function(ev) {
     $mdDialog.show({
@@ -12,12 +12,18 @@ angular.module('App')
   };
 
   function DialogController($scope, $http, $mdDialog) {
+    userService
+        .authenticate()
+        .then(function (user) { $scope.user = user });
+
     // alert("test");
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
 
     $scope.saveEvent = function() {
+      $scope.event.host = $scope.user;
+      console.log('in saveEvent, $scope.event.host is ', $scope.event.host)
       var req = {
         method: 'POST',
         url: "/events",
@@ -33,6 +39,7 @@ angular.module('App')
           return;
         }
         console.log(success);
+
       })
     };
   }
