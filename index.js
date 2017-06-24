@@ -139,7 +139,7 @@ app.post('/events', function(req, res){
   var newEvent = new Event ({
     name: req.body.name,
     description: req.body.description,
-    host: req.body.host,
+    host: req.user.user,
     type: req.body.type,
     time: req.body.time,
     price: req.body.price || 0,
