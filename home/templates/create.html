@@ -30,54 +30,29 @@
                 <input class="" type="time" id="" ng-model="event.time" required>
               </md-input-container>
 
-
               <!-- NUMBER OF PEOPLE -->
               <md-input-container class="md-block" flex-gt-sm>
               <label class="new-event-time">Number of people</label>
-                <input type="number" minlength="1" maxlength="20" ng-pattern="/0-9/" class="" ng-model="event.desiredParticipants" required>
-                <!-- 
-                <div ng-message="required">
-                  You need to include people!
-                </div>
-
-                <div ng-message="min">
-                  There needs to be at least 1 person.
-                </div>
-
-                <div ng-message="pattern">
-                  Numbers only.
-                </div>
-
-                <div ng-message="max">
-                  You have too many people.
-                </div>
-                 -->
+                <input type="number" minlength="1" maxlength="20" class="" ng-model="event.desiredParticipants" required>
               </md-input-container>
             </div>
+
             <!-- Description -->
             <md-input-container class="md-block">
               <label class="new-event-slots">Description</label>
               <input type="text" class="" ng-model="event.description">
             </md-input-container>
 
-            
-
           </form>
         </md-content>
       </div>
     </div> 
 
-  
-
     <md-dialog-actions layout="row" style="padding: 10px 0;">
-      <md-button ng-click="">
-        Cancel
-      </md-button>
+      <md-button ng-click="cancel()">Cancel</md-button>
       <span flex></span>
       <!-- ADD EVENT BUTTON -->
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">
-        Add Event
-      </button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">Add Event</button>
       
     </md-dialog-actions>
   </div>
