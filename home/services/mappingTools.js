@@ -47,7 +47,8 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
 //Marker Constructor: message is the popup, icon can be deault blue pin or something else...
 //see: http://angular-ui.github.io/ui-leaflet/examples/0000-viewer.html#/markers/icons-example
 
-    var Marker = function Marker(lat, lng, message, icon) {
+    var Marker = function Marker(layer, lat, lng, message, icon) {
+      this.layer = layer;
       this.lat = lat;
       this.lng = lng;
       this.message = message;
@@ -59,29 +60,59 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
     data.forEach(function(point) { //for each event create new marker w/ message
       if (point.location) {
         var message = new Message(point.name, point.location.address, point.description);
-        var marker = new Marker(point.location.lat, point.location.lng, message.message);
+        var marker = new Marker(point.type, point.location.lat, point.location.lng, message.message, icons[point.type]);
         Markers[point.name] = marker
       }
     })
     
     return Markers
 
+  }
+
+  function toggleLayer(type) {
+    this.$parent.layers.overlays[type].visible = !this.$parent.layers.overlays[type].visible;
   }    
 
-  defaultLoc = { //default map location used to center map and to determien default zoom.
+ var defaultLoc = { //default map location used to center map and to determien default zoom.
                   lat: 40.7475170623211,
                   lng: -73.95343780517578,
                   zoom: 12
                 }
 
-
-  defaultTile = { //map tiles from mapbox using my api key. please dont abuse me.
-    name:"mapbox street",
-    url: '//api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q'
+  var Layer =  {
+    baselayers: {
+      mapbox: {
+        name: 'mapbox',
+        type: 'xyz',
+        url: '//api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q'
+      }
+    },
+    overlays: {
+      Job: {
+        type: 'group',
+        name: 'Job',
+        visible: true
+      },
+      Class: {
+        type: 'group',
+        name: "Class",
+        visible: true
+      },
+       Food: {
+        type: 'group',
+        name: "Food",
+        visible: true
+      },
+       Party: {
+        type: 'group',
+        name: "Party",
+        visible: true
+      }
+    }
   }
 
 
-  defaultStyle = {
+ var defaultStyle = {
     radius: 8,
     fillColor: "#ff7800",
     color: "#000",
@@ -90,12 +121,44 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
     fillOpacity: 0.8
   }
 
+  var icons = {
+    Job: {
+      type: 'extraMarker',
+      icon: 'fa-usd',
+      markerColor: 'orange-dark',
+      prefix: 'fa',
+      shape: 'circle'
+    },
+    Class: {
+      type: 'extraMarker',
+      icon: 'fa-book',
+      markerColor: 'blue',
+      prefix: 'fa',
+      shape: 'penta'
+    },
+    Food: {
+      type: 'extraMarker',
+      icon: 'fa-cutlery',
+      markerColor: 'green-light',
+      prefix: 'fa',
+      shape: 'square'
+    }, 
+    Party: {
+      type: 'extraMarker',
+      icon: 'fa-certificate',
+      markerColor: 'violet',
+      prefix: 'fa',
+      shape: 'star'
+    }
+  }
+
     return {
       getCurrentPosition : getCurrentPosition,
       getEvents: getEvents,
       eventToMarker: eventToMarker,
+      toggleLayer: toggleLayer,
       defaultLoc: defaultLoc,
-      defaultTile: defaultTile,
+      Layer: Layer,
       defaultStyle: defaultStyle
     }
 }]);
