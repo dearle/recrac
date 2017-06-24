@@ -15,17 +15,39 @@ h1 {
 }
 
 .search-box {
-  min-height: 155px;
   width: 100%;
   padding: 40px 70px;
 }
-
-.demo-card-square > .mdl-card__title {
+.-card-square > .mdl-card__title {
   color: #fff;
   background:
-    url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+    url('./pic/other.jpg') bottom right 15% no-repeat #46B6AC;
+}   
+.Job-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/job.jpg') bottom right 15% no-repeat #46B6AC;
 }
-
+.Class-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/class.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Food-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/food.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Party-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/party.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Game-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/game.jpg') bottom right 15% no-repeat #46B6AC;
+}
 .mdl-textfield__label {
   top: 0!important;
 }
