@@ -8,7 +8,7 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
     .authenticate()
     .then(function (user) { $scope.user = user });
 
-  $scope.tiles = mappingTools.defaultTile; //map set up tiles from mapbox
+  $scope.layers = mappingTools.Layer; //map set up tiles from mapbox
   $scope.defaults = { scrollWheelZoom: false
                       } //map set up turn off scroll wheel zoom.
   $scope.currentLoc = mappingTools.defaultLoc; //map set up deault location.
@@ -24,11 +24,13 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         message: "You are here!",
-        icon: {  type: 'extraMarker',
-                    icon: 'fa-star',
-                    markerColor: '#f00',
-                    prefix: 'fa',
-                    shape: 'circle'},
+        icon: { 
+          type: 'extraMarker',
+          icon: 'fa-star',
+          markerColor: '#f00',
+          prefix: 'fa',
+          shape: 'circle'
+        },
         focus: true
       }         
         });
