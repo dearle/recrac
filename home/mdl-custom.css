@@ -87,17 +87,11 @@
 .mdl-demo #features section.section--center {
   max-width: 620px;
 }
-/*.mdl-demo section > header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}*/
+
 .mdl-demo section > .section__play-btn {
   min-height: 200px;
 }
-/*.mdl-demo section > header > .material-icons {
-  font-size: 3rem;
-}*/
+
 .mdl-demo section > button {
   position: absolute;
   z-index: 99;
