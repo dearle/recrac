@@ -1,5 +1,3 @@
-
-
 angular.module( "App")
   .directive('timerDirective', function() {
 

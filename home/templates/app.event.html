@@ -1,5 +1,5 @@
 <!-- navigation -->
-<div class="mdl-layout mdl-js-layout">
+<div class="mdl-layout mdl-js-layout" autoscroll="true">
     <div layout="row" class="page-header">
     </div>
 
@@ -27,20 +27,20 @@
             <div class="mdl-card__supporting-text event-details">
               <h4><b>Event Details</b></h4>
               <span>Description</span>
-              <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.</p>
+              <p>{{ event.description }}</p>
 
               <span>Location</span>
-              <p>Central Park</p>
+              <p>{{ event.location.address }}</p>
 
               <span>Participants</span>
               <p style="margin: 5px 0 0;"><img ng-src="{{user.data.user.picture}}"/> <img ng-src="{{user.data.user.picture}}"/> <img ng-src="{{user.data.user.picture}}"/></p>
               <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">And 4 others.</p>
 
               <span>Time Remaining</span>
-              <p>Central Park</p>
+              <p>{{ event.time }}</p>
 
               <span>What to bring</span>
-              <p>BYOB, food, puppy</p>
+              <p>STUFF</p>
             </div>
             <!-- 
             <div class="mdl-card__actions">

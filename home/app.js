@@ -3,11 +3,11 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
   $urlRouterProvider.otherwise('/login');
   $stateProvider
   //public state:
-    .state({
-      name: 'login',
-      url: '/login',
-      template:'<login-directive/>'
-    })
+  .state({
+    name: 'login',
+    url: '/login',
+    template:'<login-directive/>'
+  })
     //prive states:
   .state('app', {
     url: '/app',
@@ -33,26 +33,30 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         .then(function (user) { $scope.user = user });
     }
   })
-  // backed up just in case
-  .state('app.event', {
-    url: "/events",
-    templateUrl: './templates/app.event.html',
-    controller: function ($scope, userService) {
-      userService
-        .authenticate()
-        .then(function (user) { $scope.user = user });
-    }
-  })
+  // OLD EVENTS BACKED UP JUST IN CASE
+
   // .state('app.event', {
-  //   url: "/events/:eventID",
+  //   url: "/events",
   //   templateUrl: './templates/app.event.html',
-  //   controller: function ($scope, $stateParams, userService, Event) {
-  //     $scope.id = $stateParams.id;
+  //   controller: function ($scope, userService) {
   //     userService
   //       .authenticate()
   //       .then(function (user) { $scope.user = user });
   //   }
   // })
+
+  .state('app.event', {
+    url: "/events/:eventId",
+    templateUrl: './templates/app.event.html',
+    controller: function ($scope, $stateParams, userService) {
+
+      $scope.id = $stateParams.eventId;
+      // console.log('SCOPE ID: ', $scope.id)
+      // userService
+      //   .authenticate()
+      //   .then(function (user) { $scope.user = user });
+    }
+  })
 
 
 }) 
@@ -111,11 +115,4 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
       }
     ])
 
-  // .config(function ($mdThemingProvider) {
-  //   $mdThemingProvider.theme('red')
-  //     .primaryPalette('red');
-
-  //   $mdThemingProvider.theme('blue')
-  //     .primaryPalette('blue');
-  // })
 

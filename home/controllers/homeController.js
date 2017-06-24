@@ -19,8 +19,7 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
                 zoom: 12
-            } 
-
+      } 
       markers['curr'] = { //put a marker down at the curr loc't
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -35,11 +34,17 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
         });
 
   var markers = mappingTools.eventToMarker(Data); //get markers from database
- 
   $scope.markers = markers; //add them to the scope
 
 }])
 
-.controller('CardController', function($scope) {
-  $scope.users = [1,2,3,4,5];
+.controller('CardController', function($scope, $state, mappingTools) {
+  $scope.events = [];
+  mappingTools.getEvents().then(function(data) {
+    $scope.events = data;
+  });
+  $scope.openEventDetails = function() {
+    $state.go("app.event", {eventId: "594868f4d1cb8505a203b798"});
+  };
+
 });

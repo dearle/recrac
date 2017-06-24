@@ -81,7 +81,7 @@
                 <a class="dashboard-link" ui-sref="app.dash">Dashboard</a>
               </li>
               <li disabled class="mdl-menu__item">
-                <a class="dashboard-link" ui-sref="app.event">Event</a>
+                <a class="dashboard-link" ng-click="openEventDetails()">Event</a>
               </li>
               <li class="mdl-menu__item">
                 <a class="dashboard-link " href="">Logout</a>
@@ -101,7 +101,7 @@
       </div>
 
       <!-- TEMPLATE VIEWS -->
-      <ui-view>
+      <ui-view >
       </ui-view>
     </div>
 

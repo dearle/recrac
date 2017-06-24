@@ -1,5 +1,6 @@
 angular.module('App')
 .controller('CreateModal', function($scope, $mdDialog, $interval) {
+
   $scope.showAdvanced = function(ev) {
     $mdDialog.show({
       controller: DialogController,
@@ -8,20 +9,13 @@ angular.module('App')
       targetEvent: ev,
       clickOutsideToClose:true
     })
-    .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
-    }, function() {
-      $scope.status = 'You cancelled the dialog.';
-    });
   };
 
   function DialogController($scope, $http, $mdDialog) {
-    alert("test");
+    // alert("test");
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
-
-
 
     $scope.saveEvent = function() {
       var req = {
