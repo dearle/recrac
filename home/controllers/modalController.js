@@ -22,8 +22,7 @@ angular.module('App')
     };
 
     $scope.saveEvent = function() {
-      $scope.event.host = $scope.user;
-      console.log('in saveEvent, $scope.event.host is ', $scope.event.host)
+      $scope.event.host = $scope.user.data.user.user;
       var req = {
         method: 'POST',
         url: "/events",

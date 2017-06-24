@@ -144,7 +144,7 @@ app.post('/events', function(req, res){
     time: req.body.time,
     price: req.body.price || 0,
     desiredParticipants: req.body.desiredParticipants,
-    location: req.body.location
+    location: {address: req.body.location, lng: 0, lat: 0}
   });
   newEvent.save(function(err, newEvent){
     if (err) {
