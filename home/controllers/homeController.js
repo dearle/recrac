@@ -1,7 +1,7 @@
 angular.module('App')
-.controller('HomeController', ['$scope', '$rootScope', 'userService', 'mappingTools', 'Data',
+.controller('HomeController', ['$scope', '$rootScope', '$state','userService', 'searchServices', 'mappingTools', 'Data',
+function ($scope, $rootScope, $state, userService, searchServices, mappingTools, Data) {
 
-function ($scope, $rootScope, userService, mappingTools, Data) {
   var markers = {};
 
   userService //authentication
@@ -34,17 +34,19 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
         });
 
   var markers = mappingTools.eventToMarker(Data); //get markers from database
+  
   $scope.markers = markers; //add them to the scope
+  
+  $scope.eventData = Data;
 
-}])
+  $scope.filterObj = searchServices.filterObj;
 
-.controller('CardController', function($scope, $state, mappingTools) {
-  $scope.events = [];
-  mappingTools.getEvents().then(function(data) {
-    $scope.events = data;
-  });
-  $scope.openEventDetails = function() {
-    $state.go("app.event", {eventId: "594868f4d1cb8505a203b798"});
+  $scope.filterByType = searchServices.filterByType;
+
+  $scope.nofilter = searchServices.nofilter;
+
+
+  $scope.openEventDetails = function(eventId) {
+    $state.go("app.event", {eventId: eventId});
   };
-
-});
+}])

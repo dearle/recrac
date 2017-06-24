@@ -1,4 +1,4 @@
-angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAutocomplete', 'ui-leaflet' ])
+angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAutocomplete', 'ui-leaflet', 'moment-picker' ])
 .config(function($stateProvider, $urlRouterProvider) { 
   $urlRouterProvider.otherwise('/login');
   $stateProvider

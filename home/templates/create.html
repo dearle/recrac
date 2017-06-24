@@ -27,22 +27,34 @@
             <div layout-gt-sm="row">
               <md-input-container class="md-block" flex-gt-sm>
                 <label class="new-event-time">Time...</label>
-                <input class="" type="time" id="" ng-model="event.time" required>
+                <input moment-picker="dateFormatted" today="true" ng-model="event.time" format="MMMM Do YYYY, h:mm" required>
               </md-input-container>
-
               <!-- NUMBER OF PEOPLE -->
               <md-input-container class="md-block" flex-gt-sm>
               <label class="new-event-time">Number of people</label>
                 <input type="number" minlength="1" maxlength="20" class="" ng-model="event.desiredParticipants" required>
               </md-input-container>
             </div>
+      
+            <!-- Type -->
+            <label class="new-event-slots">Type</label><br/>
+            <md-input-container class="md-block">
+              <select name="singleSelect" ng-model="event.type">
+                <option value="Job">Job</option>
+                <option value="Class">Class</option>
+                <option value="Food">Food</option>
+                <option value="Party">Party</option>
+                <option value="Game">Game</option>
+                <option value="Art">Music and Art</option>
+                <option value="Other">Other</option>
+              </select>
+            </md-input-container>
 
             <!-- Description -->
             <md-input-container class="md-block">
               <label class="new-event-slots">Description</label>
               <input type="text" class="" ng-model="event.description">
             </md-input-container>
-
           </form>
         </md-content>
       </div>
