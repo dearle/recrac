@@ -9,9 +9,9 @@
      
       <div>
         <div>
-          <md-checkbox  ng-repeat="filter in filters" ng-model="filterObj[filter]">
+          <md-checkbox  ng-repeat="filter in filters" ng-model="filterObj[filter]" ng-click="toggleLayer(filter)">
             {{filter}}
-          </md-checkbox>
+             </md-checkbox>
         </div>
     </div>
   </div>
