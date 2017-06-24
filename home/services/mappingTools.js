@@ -31,6 +31,18 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
   }
 
 
+  function joinEvent(joiner, eventJoined) {
+    return $http.put('/events', {joinerData: {user: joiner.user, picture: joiner.picture, email: joiner.email}, eventData: eventJoined}, {contentType: 'application/json'})
+    .then(function (response) {
+      console.log('Update Successful: ', response);  
+    })
+    .catch(function (err) {
+      console.error('Update Failed: ', err);
+    });
+  }
+
+
+
 //take event data and convert it to mappable markers.
 
   function eventToMarker(data) {
