@@ -38,21 +38,10 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
   
   $scope.eventData = Data;
 
-<<<<<<< HEAD
-}])
-
-.controller('CardController', function($scope, $state, mappingTools) {
-  $scope.events = [];
-  mappingTools.getEvents().then(function(data) {
-    $scope.events = data;
-  });
-  $scope.openEventDetails = function() {
-    $state.go("app.event", {eventId: "594868f4d1cb8505a203b798"});
-  };
-
-});
-=======
   $scope.filters = {}
 
+  $scope.openEventDetails = function(eventId) {
+    $state.go("app.event", {eventId: eventId});
+  };
+
 }])
->>>>>>> clean
