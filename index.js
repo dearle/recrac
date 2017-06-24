@@ -145,7 +145,6 @@ app.post('/events', function(req, res){
     time: req.body.time,
     price: req.body.price || 0,
     desiredParticipants: req.body.desiredParticipants,
-    //Need help inputing this may need a method to turn adress into coordinates
     location: req.body.location
   });
   newEvent.save(function(err, newEvent){
@@ -154,15 +153,18 @@ app.post('/events', function(req, res){
     } else {
       res.status(200).send(newEvent);
     }
-  })
+  });
 });
 
 app.get('/events', function(req, res){
   Event.find({}, function(err, events) {
-    console.log('success! events gotten', events);
-    res.send(events)
-  })
-})
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(events);
+    }
+  });
+});
 
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment

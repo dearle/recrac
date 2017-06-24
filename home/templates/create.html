@@ -35,15 +35,13 @@
               <label class="new-event-time">Number of people</label>
                 <input type="number" minlength="1" maxlength="20" class="" ng-model="event.desiredParticipants" required>
               </md-input-container>
-
             </div>
+
             <!-- Description -->
             <md-input-container class="md-block">
               <label class="new-event-slots">Description</label>
               <input type="text" class="" ng-model="event.description">
             </md-input-container>
-
-            
 
           </form>
         </md-content>
@@ -51,15 +49,10 @@
     </div> 
 
     <md-dialog-actions layout="row" style="padding: 10px 0;">
-      <md-button ng-click="cancel()">
-        Cancel
-      </md-button>
-
+      <md-button ng-click="cancel()">Cancel</md-button>
       <span flex></span>
       <!-- ADD EVENT BUTTON -->
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">
-        Add Event
-      </button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">Add Event</button>
       
     </md-dialog-actions>
   </div>

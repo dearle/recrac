@@ -12,8 +12,8 @@ var eventSchema = new mongoose.Schema({
   desiredParticipants: Number,
   time: String,
   price: Number,
-  confirmedParticipants: String,
-  potentialParticipants: String
+  confirmedParticipants: [String],
+  potentialParticipants: [String]
 });
 
 eventSchema.pre('save', function(next){
