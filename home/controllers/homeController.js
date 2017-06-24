@@ -35,7 +35,10 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
 
   var markers = mappingTools.eventToMarker(Data); //get markers from database
   $scope.markers = markers; //add them to the scope
+  
+  $scope.eventData = Data;
 
+<<<<<<< HEAD
 }])
 
 .controller('CardController', function($scope, $state, mappingTools) {
@@ -48,3 +51,8 @@ function ($scope, $rootScope, userService, mappingTools, Data) {
   };
 
 });
+=======
+  $scope.filters = {}
+
+}])
+>>>>>>> clean
