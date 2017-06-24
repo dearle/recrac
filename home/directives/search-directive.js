@@ -4,14 +4,8 @@ angular.module('App')
     restrict: 'E',
     scope: {},
     controller: function ($scope, searchServices) {
-      $scope.filters =[{"name":"Job", id:1}, {name:"Class", id:2}, {name:"Food", id:3}, {name:"Party", id:4}];
-      $scope.myFilters = {
-        selected:{}
-      }; //all selected filters updated by clicking fliters
-
-      filter = function(filters) {
-        searchServices.filterAll(filters)
-      }
+      $scope.filters = searchServices.filters;
+      $scope.filterObj = searchServices.filterObj;
     },  
     templateUrl: '../templates/search.html'
   };

@@ -1,6 +1,5 @@
 angular.module('App')
 .controller('HomeController', ['$scope', '$rootScope', '$state','userService', 'searchServices', 'mappingTools', 'Data',
-
 function ($scope, $rootScope, $state, userService, searchServices, mappingTools, Data) {
 
   var markers = {};

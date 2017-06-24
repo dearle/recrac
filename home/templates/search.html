@@ -8,15 +8,11 @@
       </div>
      
       <div>
-
-        <div ng-repeat="filter in filters">
-          <md-checkbox ng-model="myFilters.selected[filter.id]" ng-true-value="'{{filter.name}}'" ng-false-value="''">
-            {{filter.name}}
+        <div>
+          <md-checkbox  ng-repeat="filter in filters" ng-model="filterObj[filter]">
+            {{filter}}
           </md-checkbox>
         </div>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" ng-click="filter(myFilters.selected)">
-        Filter
-      </button>
     </div>
   </div>
 </div>
