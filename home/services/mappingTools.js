@@ -1,4 +1,5 @@
-angular.module('App').factory('mappingTools', ['$q', '$window', '$http', function ($q, $window, $http) {
+angular.module('App')
+.factory('mappingTools', ['$q', '$window', '$http', function ($q, $window, $http) {
 
 //Get the current position from the browser and return that loc't as a proimse  
 
@@ -30,15 +31,22 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
     });
   }
 
-  // function joinEvent(joinedEventId) {
-  //   return $http.put('/events', {eventData: joinedEventId}, {contentType: 'application/json'})
-  //   .then(function (response) {
-  //     console.log('Update Successful: ', response);  
-  //   })
-  //   .catch(function (err) {
-  //     console.error('Update Failed: ', err);
-  //   });
-  // }
+  function saveEvent(newEvent, id) {
+    var req = {
+      method: 'PUT',
+      url: "/events/" + id,
+      headers: {'Content-Type': "application/json"},
+      data: newEvent
+    }
+ 
+    return $http(req).then(function(success, error) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      console.log(success);
+    })
+  }
 
 //take event data and convert it to mappable markers.
 
@@ -164,6 +172,7 @@ angular.module('App').factory('mappingTools', ['$q', '$window', '$http', functio
     return {
       getCurrentPosition : getCurrentPosition,
       getEvents: getEvents,
+      saveEvent: saveEvent,
       eventToMarker: eventToMarker,
       toggleLayer: toggleLayer,
       defaultLoc: defaultLoc,

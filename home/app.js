@@ -29,30 +29,29 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
   .state('app.dash', {
     url: "/dashboard",
     templateUrl: './templates/app.dash.html',
-    controller: function ($scope, userService) {
+    controller: function ($scope, userService, mappingTools) {
+      $scope.events = [];
+      mappingTools.getEvents().then(function(data) {
+        $scope.events = data;
+      })
       userService
         .authenticate()
         .then(function (user) { $scope.user = user });
     }
   })
-  // OLD EVENTS BACKED UP JUST IN CASE
-
-  // .state('app.event', {
-  //   url: "/events",
-  //   templateUrl: './templates/app.event.html',
-  //   controller: function ($scope, userService) {
-  //     userService
-  //       .authenticate()
-  //       .then(function (user) { $scope.user = user });
-  //   }
-  // })
 
   .state('app.event', {
     url: "/events/:eventId",
+    params: {event: null},
     templateUrl: './templates/app.event.html',
-    controller: function ($scope, $stateParams, userService) {
-
+    controller: function ($scope, $stateParams, userService, $state) {
       $scope.id = $stateParams.eventId;
+      $scope.event = $state.params.event
+      $scope.save = function() {
+        mappingTools.saveEvent($scope.event, $scope.id).then(function() {
+          alert("TEST SAVE");
+        })
+      }
     }
   })
 })

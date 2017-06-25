@@ -35,68 +35,6 @@
               </div>
             </div>
           </div>
-
-          <!-- REVIEWS -->
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-
-                <!-- COMMENT TITLE -->
-                <div class="mdl-cell mdl-cell--12-col">
-                  <h4 class=""><b>Reviews</b></h4>
-                  <div class="rating">
-                    <span>Rating</span>
-                    <p>&#x2605 &#x2605 &#x2605 &#x2605</p><br/>
-                  </div>
-                </div>
-
-                <!-- ACTUAL COMMENTS  -->
-
-                <!-- COMMENT 1 -->
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
-                  <p>{{user.data.user.user}}</p>
-
-                  <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
-
-                  <div class="rating">
-                    <p>&#x2605 &#x2605 &#x2605 &#x2605</p><br/>
-                  </div>
-                </div>
-
-                <!-- COMMENT 2 -->
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-
-                  <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;">
-                  </div>
-
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
-                  <p>{{user.data.user.user}}</p>
-                  <p>Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis</p>
-
-                  <div class="rating">
-                    <p>&#x2605 &#x2605 &#x2605 &#x2605</p><br/>
-                  </div>
-                </div>
-
-              </div>
-              <div class="mdl-card__actions">
-                <a href="#" class="mdl-button">Add Comment</a>
-              </div>
-
-            </div>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-          </section>
         </section>
 
         <!-- CARDS -->
@@ -104,9 +42,9 @@
           <h1>my events</h1>
         </div>
 
-        <div class='md-padding' layout="row" ng-controller="CardController" style="text-align: center; padding:0">
+        <div class='md-padding' layout="row" style="text-align: center; padding:0">
           <div layout="row" flex layout-wrap >
-            <div class="parent" layout="column" ng-repeat="user in users" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+            <div class="parent" layout="column" ng-repeat="event in events | filter:{host: user.data.user.user }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
               <card-directive></card-directive>
             </div>
           </div>

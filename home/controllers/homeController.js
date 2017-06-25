@@ -47,8 +47,8 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
 
   $scope.nofilter = searchServices.nofilter;
 
-  $scope.openEventDetails = function(eventId) {
-    $state.go("app.event", {eventId: eventId});
+  $scope.openEventDetails = function(clickedEvent) {
+    $state.go("app.event", {eventId: clickedEvent._id, event: clickedEvent});
   };
 }])
 
