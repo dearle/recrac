@@ -2,12 +2,14 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
 .config(function($stateProvider, $urlRouterProvider) { 
   $urlRouterProvider.otherwise('/login');
   $stateProvider
+
   //Public state:
   .state({
     name: 'login',
     url: '/login',
     template:'<login-directive/>'
   })
+
   //Private states:
   .state('app', {
     url: '/app',
@@ -33,15 +35,27 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         .then(function (user) { $scope.user = user });
     }
   })
+  // OLD EVENTS BACKED UP JUST IN CASE
+
+  // .state('app.event', {
+  //   url: "/events",
+  //   templateUrl: './templates/app.event.html',
+  //   controller: function ($scope, userService) {
+  //     userService
+  //       .authenticate()
+  //       .then(function (user) { $scope.user = user });
+  //   }
+  // })
+
   .state('app.event', {
     url: "/events/:eventId",
     templateUrl: './templates/app.event.html',
     controller: function ($scope, $stateParams, userService) {
+
       $scope.id = $stateParams.eventId;
     }
   })
 })
-
 
 .run(function($transitions) { //this is like a lifecycle method for ui-router that checks at the start of a re-route (i.e state change) for any children of app 
   $transitions.onStart({ to: 'app.**' }, function(trans) { 

@@ -36,7 +36,7 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
         });
 
   var markers = mappingTools.eventToMarker(Data); //get markers from database
-  
+
   $scope.markers = markers; //add them to the scope
   
   $scope.eventData = Data;
@@ -55,3 +55,4 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
     console.log("Event is: ", eventName);
   };
 }])
+
