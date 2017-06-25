@@ -2,7 +2,7 @@ angular.module('App')
 .factory('searchServices', function() {
   
   var filters = ["Job", "Class", "Food", "Party"]
-  var filterObj = {};
+  var filterObj = {"Job":true,"Class":true,"Food":true,"Party":true};
    //all selected filters updated by clicking fliters
   filterByType = function(event) {
     return filterObj[event.type] || nofilter(filterObj)
