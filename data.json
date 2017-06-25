@@ -7,8 +7,8 @@
   "desiredParticipants": 2,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Pasta Party",
@@ -19,8 +19,8 @@
   "desiredParticipants": 3,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Transformers Audition",
@@ -31,8 +31,8 @@
   "desiredParticipants": 1,
   "time": "09:00:AM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Extras for Suits Episode",
@@ -43,8 +43,8 @@
   "desiredParticipants": 10,
   "time": "01:00:PM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Tennis Lesson",
@@ -55,8 +55,8 @@
   "desiredParticipants": 2,
   "time": "11:00:AM",
   "price": 20,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Piano Lesson",
@@ -67,8 +67,8 @@
   "desiredParticipants": 1,
   "time": "10:00:AM",
   "price": 25,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "BBQ/Block Party",
@@ -79,8 +79,8 @@
   "desiredParticipants": 10,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 },
 {
   "name": "Javascript Intro Class",
@@ -91,6 +91,6 @@
   "desiredParticipants": 10,
   "time": "08:00:PM",
   "price": 0,
-  "confirmedParticipants": "",
-  "potentialParticipants": ""
+  "confirmedParticipants": [],
+  "potentialParticipants": []
 }]

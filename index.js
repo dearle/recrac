@@ -155,6 +155,9 @@ app.post('/events', function(req, res){
   });
 });
 
+
+
+
 app.put('/events', function(req, res){
   User.findOne({_id: req.user._id}, function(err, joiner){
     if(err){
@@ -170,6 +173,52 @@ app.put('/events', function(req, res){
         }
       })
     }
+  });
+});
+
+app.put('/events/:id', function(req, res){
+    // Geting the event to update
+  Event.findOne({_id: req.param("id")}, function(err, newEvent){
+        // Updating all the information from the event
+        // **********************************************************************
+        if(req.body.name){
+            newEvent.name = req.body.name;   
+        }
+        if(req.body.description){
+            newEvent.description = req.body.description;
+        }
+        
+        if(req.user){
+            newEvent.host = req.user.user;
+        }
+        
+        if(req.body.type){
+            newEvent.type = req.body.type;
+        }
+        
+        if(req.body.time){
+            newEvent.time = req.body.time;
+        }
+        if(req.body.price){
+            newEvent.price = req.body.price || 0;
+        }
+        if(req.body.desiredParticipants){
+            newEvent.desiredParticipants = req.body.desiredParticipants;
+        }
+        
+        if(req.body.location){
+            newEvent.location = {
+                address: req.body.location,
+                lng: 0, 
+                lat: 0
+            }
+        }
+        // **********************************************************************
+        
+        // Saving the changed fields
+        newEvent.save(function(err, updatedEvent){
+            res.send(updatedEvent);
+        });
   });
 });
 
