@@ -50,9 +50,5 @@ function ($scope, $rootScope, $state, userService, searchServices, mappingTools,
   $scope.openEventDetails = function(eventId) {
     $state.go("app.event", {eventId: eventId});
   };
-  $scope.joinEventHandler = function(eventName/*joiner, eventData*/) {
-    //mappingTools.joinEvent(joiner, eventData);
-    console.log("Event is: ", eventName);
-  };
 }])
 
