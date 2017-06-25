@@ -2,6 +2,7 @@ angular.module('App')
 .directive('cardDirective', ['$http', function($http) {
   return {
     restrict: 'E',
+
     controller: function ($scope, $http) {
         $scope.joinEventHandler = function(joinedEventId) {
             $http.put('/events', {eventData: joinedEventId}, {contentType: 'application/json'})
@@ -12,8 +13,8 @@ angular.module('App')
                 console.error('Update Failed: ', err);
             });
         };
+
     },
     templateUrl: '../templates/card.html'
   };
 }]);
-

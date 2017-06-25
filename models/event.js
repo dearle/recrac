@@ -17,9 +17,6 @@ var eventSchema = new mongoose.Schema({
 });
 
 eventSchema.pre('save', function(next){
-  var time = new Date(this.time);
-  this.time = time.toDateString();
-
   request(geocodeURL + this.location.address, (err, response, body) => {
     if (err){
       console.error(err);

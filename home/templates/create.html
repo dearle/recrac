@@ -29,11 +29,19 @@
                 <label class="new-event-time">Time...</label>
                 <input moment-picker="dateFormatted" today="true" ng-model="event.time" format="MMMM Do YYYY, h:mm" required>
               </md-input-container>
+              
+              <!--Price-->
+              <md-input-container class="md-block" flex-gt-sm>
+                  <label class="new-event-price" placeholder="Price">Price</label>
+                  <input class="" type="number" id="" ng-model="event.price" required>
+              </md-input-container>
+
+
 
               <!-- NUMBER OF PEOPLE -->
               <md-input-container class="md-block" flex-gt-sm>
               <label class="new-event-time">Number of people</label>
-                <input type="number" minlength="1" maxlength="20" class="" ng-model="event.desiredParticipants" required>
+                <input type="number" minlength="1" class="" ng-model="event.desiredParticipants" required>
               </md-input-container>
 
             </div>
