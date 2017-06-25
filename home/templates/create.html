@@ -29,11 +29,13 @@
                 <label class="new-event-time">Time...</label>
                 <input moment-picker="dateFormatted" today="true" ng-model="event.time" format="MMMM Do YYYY, h:mm" required>
               </md-input-container>
+
               <!-- NUMBER OF PEOPLE -->
               <md-input-container class="md-block" flex-gt-sm>
               <label class="new-event-time">Number of people</label>
                 <input type="number" minlength="1" maxlength="20" class="" ng-model="event.desiredParticipants" required>
               </md-input-container>
+
             </div>
       
             <!-- Type -->
@@ -61,7 +63,9 @@
     </div> 
 
     <md-dialog-actions layout="row" style="padding: 10px 0;">
+
       <md-button ng-click="cancel()">Cancel</md-button>
+
       <span flex></span>
       <!-- ADD EVENT BUTTON -->
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">Add Event</button>

@@ -22,6 +22,7 @@ angular.module('App')
     };
 
     $scope.saveEvent = function() {
+
       $scope.event.host = $scope.user.data.user.user;
       var req = {
         method: 'POST',
@@ -38,7 +39,6 @@ angular.module('App')
           return;
         }
         console.log(success);
-
       })
     };
   }

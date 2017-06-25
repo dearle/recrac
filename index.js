@@ -139,7 +139,7 @@ app.post('/events', function(req, res){
   var newEvent = new Event ({
     name: req.body.name,
     description: req.body.description,
-    host: req.body.host,
+    host: req.user.user,
     type: req.body.type,
     time: req.body.time,
     price: req.body.price || 0,
@@ -151,6 +151,24 @@ app.post('/events', function(req, res){
       res.status(500).send(err);
     } else {
       res.status(200).send(newEvent);
+    }
+  });
+});
+
+app.put('/events', function(req, res){
+  User.findOne({_id: req.user._id}, function(err, joiner){
+    if(err){
+      res.status(500).send(err);
+    } else {
+      var joinerObj = {$push: {potentialParticipants: {user: joiner.user, photo: joiner.picture, email: joiner.email}}};
+      console.log(req.body);
+      Event.update({_id: req.body.eventData}, joinerObj, function(err, updatedEvent){
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(updatedEvent);
+        }
+      })
     }
   });
 });
