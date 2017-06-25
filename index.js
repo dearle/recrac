@@ -155,6 +155,24 @@ app.post('/events', function(req, res){
   });
 });
 
+app.put('/events', function(req, res){
+  User.findOne({_id: req.user._id}, function(err, joiner){
+    if(err){
+      res.status(500).send(err);
+    } else {
+      var joinerObj = {$push: {potentialParticipants: {user: joiner.user, photo: joiner.picture, email: joiner.email}}};
+      console.log(req.body);
+      Event.update({_id: req.body.eventData}, joinerObj, function(err, updatedEvent){
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(updatedEvent);
+        }
+      })
+    }
+  });
+});
+
 app.get('/events', function(req, res){
   Event.find({}, function(err, events) {
     if(err){
