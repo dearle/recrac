@@ -35,24 +35,47 @@
                 <h2 style="margin-top: 0"><b>Hello, I'm {{user.data.user.user}}</b></h2>
                 <h4><b>New York, NY</b></h4>
                 <span>Description</span>
-                <p click-to-edit="user.description">I like green eggs and ham! I do! I like them, Sam-I-am! And I would eat them in a boat! And I would eat them with a goat. And I will eat them in the rain. And in the dark. And on a train. And in a car. And in a tree. They are so good so good you see!</p>
+
+                <p click-to-edit="user.data.user.description"></p>
+
               </div>
+                 <md-button class="md-primary" data-mdc-auto-init="MDCRipple" ng-click="updateUserInfo(user.data.user.facebook.id, user.data.user.email, user.data.user.number, user.data.user.description)">Update User Info</md-button>
             </div>
           </div>
         </section>
 
-        <!-- CARDS -->
+        <!-- Hosting CARDS -->
         <div class="" style="width: 100%; text-align: center">
-          <h1>my events</h1>
+          <h1> Hosting Events</h1>
         </div>
 
         <div class='md-padding' layout="row" style="text-align: center; padding:0">
           <div layout="row" flex layout-wrap >
             <div class="parent" layout="column" ng-repeat="event in events | filter:{host: {user: user.data.user.user} }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
               <card-directive></card-directive>
+
+            </div>
+          </div>
+        </div>
+
+       <!-- Joined CARDS -->
+        <div class="" style="width: 100%; text-align: center">
+          <h1>Events I Am Attending</h1>
+        </div>
+
+        <div class='md-padding' layout="row" style="text-align: center; padding:0">
+          <div layout="row" flex layout-wrap >
+
+            <div class="parent" layout="column" ng-repeat="event in events | filter:participantMatch(user.data.user.user)" 
+            flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+
+            <div class="parent" layout="column" ng-repeat="event in events | filter:{host: {user: user.data.user.user} }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+
+              <card-directive></card-directive>
             </div>
           </div>
         </div>
     </div>
+
   </main>
 </div>

@@ -10,7 +10,8 @@ var userSchema = new mongoose.Schema({
   facebook: Object,
   hostedEvents: [String],
   joinedEvents: [String],
-  rating: Number
+  rating: Number,
+  description: String
 });
 
 

@@ -10,5 +10,6 @@ angular.module('App')
                 <p><strong>{{message.user}}</strong></p><p>{{message.text}}</p>
               </div>
               `
+
   };
 });

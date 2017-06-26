@@ -6,7 +6,9 @@ angular.module('App')
     controller: function ($scope, userService) {
       userService
         .authenticate()
-        .then(function (user) { $scope.user = user });
+        .then(function (user) { 
+          $scope.user = user 
+        });
     },
     templateUrl: '../templates/login.html'
   };
