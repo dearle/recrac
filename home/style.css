@@ -52,6 +52,12 @@ h2 {
   background:
     url('./pic/game.jpg') bottom right 15% no-repeat #46B6AC;
 }
+
+/*.snippet-demo-container.mdl-card__title.mdl-card--expand {
+    height: 150px;
+    text-shadow: 2px 2px 2px black;
+}*/
+
 .mdl-textfield__label {
   top: 0!important;
 }
@@ -206,7 +212,6 @@ md-input-container.md-input-focused label {
 .card-text p {
   margin: 0;
 }
-
 
 comment-directive {
   width: 100%;
