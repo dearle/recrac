@@ -37,8 +37,10 @@
 
             <span>Confirmed Participants}</span>
             <p style="margin: 5px 0 0;">
+
               <img ng-src="{{event.host.photo}}"/>
               <img ng-repeat="participant in event.confirmedParticipants" ng-src="{{participant.photo}}"/>
+
             </p>
 
             <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{event.desiredParticipants}} spots remaining!</p>
