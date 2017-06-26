@@ -36,7 +36,8 @@ angular.module('App')
       }
 
       $scope.showData = function(eventId, participantName ) {
-        $http.put("/confirmParticipant", {eventId:eventId, participantName:participantName }, {contentType: 'application/json'})
+        console.log("dnwbuiy")
+        $http.put("/confirmParticipant", {eventId:eventId, participantName:participantName}, {contentType: 'application/json'})
         .then(function (response) {
           console.log('Put Successful: ', response);
         })
@@ -44,4 +45,4 @@ angular.module('App')
           console.error('Post Failed: ', err);
         });
       }
-    }
+    })
