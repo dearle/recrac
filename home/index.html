@@ -69,7 +69,7 @@
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
-          <nav class="mdl-navigation" >
+          <nav class="mdl-navigation nav-main" >
             <a class="mdl-navigation__link home-link" ui-sref="app.home">Home</a>
             <a class="mdl-navigation__link home-link" ng-click="showAdvanced($event)" ui-sref="app.home">Create</a>
             <a class="mdl-navigation__link dashboard-link" ui-sref="login">Login</a>
@@ -81,13 +81,7 @@
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="nav-account-options">
               <li class="mdl-menu__item">
-                <a class="home-link" ui-sref="app.home">Home</a>
-              </li>
-              <li class="mdl-menu__item">
                 <a class="dashboard-link" ui-sref="app.dash">Dashboard</a>
-              </li>
-              <li disabled class="mdl-menu__item">
-                <a class="dashboard-link" ng-click="openEventDetails()">Event</a>
               </li>
               <li class="mdl-menu__item">
                 <a class="dashboard-link " href="">Logout</a>
@@ -101,7 +95,9 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title logo">bid-your-time</span>
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link dashboard-link" ui-sref="app.home">Home</a>
           <a class="mdl-navigation__link dashboard-link" ui-sref="app.dash">Dashboard</a>
+          <a class="mdl-navigation__link home-link" ng-click="showAdvanced($event)" ui-sref="app.home">Create</a>
           <a class="mdl-navigation__link dashboard-link" href="">Logout</a>
         </nav>
       </div>

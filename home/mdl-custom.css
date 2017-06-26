@@ -179,7 +179,7 @@
 }
 
 @media screen and (max-width: 680px) {
-  .mdl-navigation {
+  .nav-main {
     display:none!important;
   }
 }
