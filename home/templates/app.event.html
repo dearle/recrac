@@ -1,0 +1,133 @@
+<!-- navigation -->
+<div class="mdl-layout mdl-js-layout" autoscroll="true">
+  <div layout="row" class="page-header-{{event.type}}"></div>
+
+</div>
+
+<main class="mdl-layout__tab-panel is-active">
+  <div class="mdl-layout__tab-panel is-active" id="overview" style="background: whitesmoke">
+
+    <!-- EVENT TITLE -->
+    <section class="section--center mdl-grid">
+      <h1 style="margin: 0">{{event.name}}</h1>
+    </section>
+
+
+    <!-- EVENT INFO -->
+    <section class="section--center mdl-grid mdl-grid--no-spacing event-block-container" style="">
+
+      <!-- EVENT DETAILS -->
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-left" >
+        <div style="padding: 20px;">
+          <div class="mdl-card__supporting-text event-details">
+            
+            <h2 style="margin-top: 0"><b>Event Details</b></h2>
+
+            <span>Event Name</span>
+            <p click-to-edit="event.name"></p>
+            <!-- <p>{{event.name}}</p> -->
+
+            <span>Description</span>
+            <p click-to-edit="event.description"></p>
+            <!-- <p>{{ event.description }}</p> -->
+
+            <span>Location</span>
+            <p click-to-edit="event.location.address"></p>
+            <!-- <p>{{ event.location.address }}</p> -->
+
+            <span>Confirmed Participants</span>
+            <p style="margin: 5px 0 0;">
+
+              <img ng-src="{{event.host.photo}}"/>
+              <img ng-repeat="participant in event.confirmedParticipants" ng-src="{{participant.photo}}"/>
+
+            </p>
+
+            <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{event.desiredParticipants}} spots remaining!</p>
+            <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
+            <div> <!-- ng-show="event.host.user === user.data.user.user" -->
+              <span>Potential Participants</span>
+              <p style="margin: 5px 0 0;">
+              <div class="potential-part-div" ng-repeat="participant in event.potentialParticipants" >
+                <img ng-src="{{participant.photo}}"/><br/>
+                <md-button class="md-icon-button md-accent potential-icons potential-icons-check" ng-click="showData(event._id, participant.user)">
+                  <i class="material-icons">&#xE876;</i>
+                </md-button>
+                <md-button class="md-icon-button md-accent potential-icons potential-icons-delete">
+                  <i class="material-icons">&#xE92B;</i>
+                </md-button>
+              </div>
+
+              </p>
+            </div>
+            <div style="clear: both">
+            <span>Time and Date</span>
+            <p click-to-edit="event.time | date:'EEEE, MMMM d, h:mm a'"></p>
+            <!-- <p>{{ event.time | date:'EEEE, MMMM d, h:mm a'}}</p> -->
+
+            <span>Price</span>
+            $<p click-to-edit="event.price"></p>
+            <!-- <p>{{event.price}} $</p> -->
+
+            <span>Type</span>
+            <p click-to-edit="event.type"></p>
+            <!-- <p>{{event.type}}</p> -->
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENT HOST -->
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-right">
+        <div style="padding: 20px 0;width: 100%;">
+          <div class="mdl-card__supporting-text event-details">
+
+            <h2 style="margin-top: 0"><b>Event Host</b></h2>
+
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ event.host.photo }}'); background-size:cover;"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
+              <span>Name</span>
+              <p>{{event.host.user}}</p>
+
+              <span>About Me</span>
+              <p>{{event.host.description}}</p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- COMMENTS -->
+
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="">
+      <div class="mdl-card mdl-cell mdl-cell--12-col" style="">
+        <div style="padding: 0 20px">
+          <h2 style="font-size: 2em"><b>Comments</b></h2>
+          <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" ng-repeat="message in messages" style="width: 100%;margin: 0">
+
+            <comment-directive></comment-directive>
+
+          </div>
+        </div>
+        <div layout="column" class="md-inline-form">
+          <md-content layout-gt-sm="row" layout-padding>
+            <div style="width: 100%">
+              <form name="eventComment">
+                <div layout-gt-lg="row">
+                  <md-input-container class="md-block" style="margin-bottom: 0px;">
+                     <textarea ng-model="message.text" md-maxlength="140" rows="2" md-select-on-focus style="width:99%"> </textarea>
+                  </md-input-container>
+                  <a ng-click="saveMessage()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Add Comment</a>
+                </div>
+              </form>
+            </div>
+          </md-content>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

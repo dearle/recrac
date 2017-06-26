@@ -9,4 +9,4 @@ exports.twilioNum = '+17744625281';
 //facebook app id and secret key.
 exports.FACEBOOK_APP_ID = 123772004874308;
 
-exports.FACEBOOK_APP_SECRET = 'e332531c73f223466140121ba1a44f21'
+exports.FACEBOOK_APP_SECRET = 'e332531c73f223466140121ba1a44f21';

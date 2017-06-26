@@ -2,7 +2,7 @@
   "name": "recrac",
   "version": "1.0.0",
   "description": "Greenfield project",
-  "main": "index.js",
+  "main": "recrac",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
@@ -18,19 +18,27 @@
   },
   "homepage": "https://github.com/dearle/recrac#readme",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.4",
     "angular-material": "^1.1.4",
-    "angular-ui-router": "^1.0.3",
+    "angular-simple-logger": "^0.1.7",
     "body-parser": "^1.17.2",
+    "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "font-awesome": "^4.0.3",
     "leaflet": "^1.0.3",
+    "leaflet-extra-markers": "^1.0.6",
     "mongoose": "^4.10.6",
     "node": "0.0.0",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1"
+    "passport-facebook": "^2.1.1",
+    "request": "^2.81.0",
+    "ui-leaflet": "^1.0.3"
   }
 }

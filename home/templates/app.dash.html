@@ -1,0 +1,79 @@
+<!-- navigation -->
+<div class="mdl-layout mdl-js-layout">
+
+  <main class="mdl-layout__tab-panel is-active">
+    <div class="mdl-layout__tab-panel is-active" id="overview" style="background: whitesmoke">
+
+      <!-- MAIN PROFILE -->
+      <section class="section--center mdl-grid mdl-grid--no-spacing event-block-container" style="">
+
+        <!-- PROFILE PHOTO and stuff -->
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-right" style="max-width:500px" >
+          <div style="padding: 20px; width: 100%;">
+            <div class="mdl-card__supporting-text event-details">
+              <div class="user-profile" style="width:100%; background:black">
+                <img ng-src="{{user.data.user.picture}}"/>
+              </div><br/>
+
+              <span>Email</span>
+              <p click-to-edit="user.data.user.email"></p>
+              <!-- <p>{{user.data.user.email}}</p> -->
+
+              <span>Phone Number</span>
+              <p click-to-edit="user.data.user.number"></p>
+              <!-- <p>{{user.data.user.number}}</p> -->
+
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE DESCRIPTION AND REVIEWS-->
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-left" style="max-width:800px" >
+          <div class="mdl-cell mdl-cell--12-col" style="padding: 20px 0;width: 100%;">
+            <div class="mdl-card__supporting-text event-details">
+              <div class="mdl-card__supporting-text event-details" style="padding-top: 0">
+                <h2 style="margin-top: 0"><b>Hello, I'm {{user.data.user.user}}</b></h2>
+                <h4><b>New York, NY</b></h4>
+                <span>Description</span>
+
+                <p click-to-edit="user.data.user.description"></p>
+
+              </div>
+                 <md-button class="md-primary" data-mdc-auto-init="MDCRipple" ng-click="updateUserInfo(user.data.user.facebook.id, user.data.user.email, user.data.user.number, user.data.user.description)">Update User Info</md-button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Hosting CARDS -->
+        <div class="" style="width: 100%; text-align: center">
+          <h1> Hosting Events</h1>
+        </div>
+
+        <div class='md-padding' layout="row" style="text-align: center; padding:0">
+          <div layout="row" flex layout-wrap >
+            <div class="parent" layout="column" ng-repeat="event in events | filter:{host: {user: user.data.user.user} }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+              <card-directive></card-directive>
+
+            </div>
+          </div>
+        </div>
+
+       <!-- Joined CARDS -->
+        <div class="" style="width: 100%; text-align: center">
+          <h1>Events I Am Attending</h1>
+        </div>
+
+        <div class='md-padding' layout="row" style="text-align: center; padding:0">
+          <div layout="row" flex layout-wrap >
+
+            <div class="parent" layout="column" ng-repeat="event in events | participantMatch:user.data.user.user"
+            flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+
+              <card-directive></card-directive>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </main>
+</div>

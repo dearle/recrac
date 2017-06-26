@@ -1,3 +1,267 @@
-html, body {
-  font-family: sans-serif;
+ .angular-leaflet-map {
+    z-index:60;
+  }
+  
+h1, h2 {
+  font-family: "Futura","Helvetica";
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -.05em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+.custom-nav{
+  background-color: rgb(63,81,181);
+  color: rgb(255,255,255);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-property: max-height,box-shadow;
+}
+
+.search-box {
+  width: 100%;
+  padding: 40px 70px;
+}
+.-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/other.jpg') bottom right 15% no-repeat #46B6AC;
+}   
+.Job-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/job.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Class-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/class.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Food-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/food.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Party-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/party.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.Game-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('./pic/game.jpg') bottom right 15% no-repeat #46B6AC;
+}
+
+/*.snippet-demo-container.mdl-card__title.mdl-card--expand {
+    height: 150px;
+    text-shadow: 2px 2px 2px black;
+}*/
+
+.mdl-textfield__label {
+  top: 0!important;
+}
+
+.event-detail{
+  padding-left: 10px;
+}
+
+.page-header-Job{
+  background: url("./pic/job header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Food{
+  background: url("./pic/food header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Class{
+  background: url("./pic/class header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Party{
+  background: url("./pic/party header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.event-block-container {
+  margin-bottom: 20px;
+}
+
+.event-block-left {
+  width: calc(66% - 5px);
+  margin-right: 5px;
+  background: white;
+}
+
+.event-block-right {
+  width: calc(33.33333% - 5px);
+  margin-left: 5px;
+  background: white;
+}
+
+.user-profile img {
+    width: 100%;
+}
+
+.user-profile {
+    width: 100%;
+    background: black;
+}
+
+
+.event-details span {
+    font-weight: bold;
+}
+
+.event-details p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.nav-account {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.logo {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif!important;
+  font-size: 1.4em!important;
+  font-weight: 700!important;
+}
+
+/*login*/
+
+#nav-account-options {
+  background: #84c9de;
+  border: 3px white solid;
+  width: 35px;
+  height: 35px;
+}
+
+#nav-account-options:hover {
+  border-color: rgb(255,64,129);
+}
+
+.login-group {
+  display: table-row;
+}
+
+.login-form {
+  width: 300px;
+  padding: 20px;
+  margin: 50px 0;
+  text-align: center;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif!important;
+}
+
+.login-form a {
+  background: rgb(255,64,129);
+  padding: 10px 20px;
+  color: white;
+}
+
+.login-form ul {
+  padding-left: 0;
+}
+
+.login-form ul li {
+  list-style: none;
+  padding: 0 0 20px;
+}
+
+.div-padding{
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+  width: 50%;
+}
+
+.mdl-layout__drawer.is-visible {
+    z-index: 1001;
+}
+
+md-input-container.md-input-focused label {
+  display: none
+}
+
+.card-text {
+  margin: 20px!important;
+  text-align: left;margin: 20px;
+}
+
+.card-text p {
+  margin: 0;
+}
+
+comment-directive {
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+}
+
+.comment-text {
+  float: left;
+  padding-top: 0!important;
+}
+
+
+.comment-text p {
+  margin: 0!important;
+}
+.comment-photo {
+  width: calc(100% - 100px);
+  float: left;
+}
+
+.potential-part-div {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  float: left;
+}
+
+.potential-icons {
+  background: #ff4081;
+  color: white!important;
+  position: absolute;
+  zoom: 50%;
+}
+
+.potential-icons:hover {
+  background: #bd2056;
+}
+
+.potential-icons-check {
+  
+  top: 8px;
+  left: 75px;
+}
+
+.potential-icons-delete {
+
+  top: 52px;
+  left: 75px;
 }

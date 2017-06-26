@@ -1,24 +1,111 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<html ng-app="App" >
   <head>
     <meta charset="utf-8">
-    <title>Greenfield</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="/angular/angular.js"></script>
-    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
-
+    <title>Bid Your Time</title>
     
+    <!-- ANGULAR -->
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-material/angular-material.min.js"></script>
+    <script src="/angular-animate/angular-animate.js"></script>
+    <script src="/angular-aria/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places" async defer></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> <!-- MATERIAL LITE-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js" async defer></script>
+    <!-- Moment.js && Moment date time picker -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+    <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/themes/material-ui.min.css" rel="stylesheet">
+
+
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./mdl-custom.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="./style.css"> 
+   
+    <!-- MAPPING -->  
+    <script src="/leaflet/dist/leaflet.js"></script>
+    <script src="/ui-leaflet/dist/ui-leaflet.min.js"></script>
+    <script src="/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+    <script src="/leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js"></script>
+
+    <link rel="stylesheet" href="/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css">
+
+    <!-- DIRECTIVES -->
     <script src="./app.js"></script>
-    <script src="./services/fetch-service.js"></script>
-    <script src="./directives/history-directive.js"></script>
-
+    <script src="./services/userFilter.js"></script>
+    <script src="./services/mappingTools.js"></script>
+    <script src="./services/searchServices.js"></script>
+    <script src="./controllers/dashController.js"></script>
+     <script src="./controllers/eventController.js"></script>
+    <script src="./controllers/homeController.js"></script>
+    <script src="./controllers/modalController.js"></script>
+    <script src="./directives/search-directive.js"></script>
+    <script src="./directives/login-directive.js"></script>
+    <script src="./directives/map-autocomplete.js"></script>
+    <script src="./directives/card-directive.js"></script>
+    <script src="./directives/comment-directive.js"></script>
+    <script src="./directives/edit-directive.js"></script>
+    <script src="./directives/timer-directive.js"></script>
   </head>
-  <body>
-    <h1>Greenfield</h1>
 
-    <a ui-sref="history">Change Template</a>
 
-    <!-- This is where ui-router template info will be inserted into page -->
-    <ui-view></ui-view>
+
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout" ng-controller="CreateModal">
+
+      <!-- NAV BAR -->
+      <header class="custom-nav" style="background: rgb(63,81,181);">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title logo" style="color:white">
+            <a ui-sref="app.home" style="text-decoration: none!important; color: white!important; font-weight: 700!important;">bid-your-time</a>
+          </span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation nav-main" >
+            <a class="mdl-navigation__link home-link" ui-sref="app.home">Home</a>
+            <a class="mdl-navigation__link home-link" ng-click="showAdvanced($event)" ui-sref="app.home">Create</a>
+            <a class="mdl-navigation__link dashboard-link" ui-sref="login">Login</a>
+            
+            <!-- OPEN MENU -->
+            <button id="nav-account-options" class="mdl-button mdl-js-button mdl-button--icon">
+              <div class="nav-account" style="background: url('http://i.imgur.com/SBT6D2p.png'); background-size: cover"> 
+              </div>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="nav-account-options">
+              <li class="mdl-menu__item">
+                <a class="dashboard-link" ui-sref="app.dash">Dashboard</a>
+              </li>
+              <li class="mdl-menu__item">
+                <a class="dashboard-link " href="/logout" target="_self">Logout</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+      <!-- NAV LEFT MENU -->
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title logo">bid-your-time</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link dashboard-link" ui-sref="app.home">Home</a>
+          <a class="mdl-navigation__link dashboard-link" ui-sref="app.dash">Dashboard</a>
+          <a class="mdl-navigation__link home-link" ng-click="showAdvanced($event)" ui-sref="app.home">Create</a>
+          <a class="mdl-navigation__link dashboard-link " href="/logout" target="_self">Logout</a>
+        </nav>
+      </div>
+
+      <!-- TEMPLATE VIEWS -->
+      <ui-view ></ui-view>
+    </div>
   </body>
 </html>

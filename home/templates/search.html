@@ -1,0 +1,17 @@
+<div layout="row" style="background:#e4e4e4;">
+  <div class="search-box">
+
+    <div style="text-align: center">
+      <!-- <span class="mdl-layout__title">Search Event</span>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" style="width: 100%" id="">
+      </div> -->
+      <div>
+        <div>
+          <md-checkbox ng-repeat="filter in filters" ng-model="filterObj[filter]" ng-click="toggleLayer(filter)">
+            {{filter}}
+           </md-checkbox>
+        </div>
+    </div>
+  </div>
+</div>

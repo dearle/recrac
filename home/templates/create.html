@@ -1,0 +1,83 @@
+<md-dialog style="z-index: 400" aria-label="Create (Form)">
+  <div>
+  <!-- Each text field has its own div.. cuz effects -->
+
+    <div>
+    <h1 style="font-size: 2em; margin-left: 35px;">Create an event</h1>
+      <div layout="column" ng-cloak class="md-inline-form">
+        <md-content layout-gt-sm="row" layout-padding style="padding: 25px;">
+          <form name="eventForm">
+            <!-- EVENT FIELD -->
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                  <label class="new-event-name" placeholder="Name of event">Name of event</label>
+                  <input class="" type="text" id="" ng-model="event.name" required>
+              </md-input-container>
+
+              <!-- LOCATION FIELD -->
+              <md-input-container class="md-block" flex-gt-sm>
+                <div id="locationField" layout-gt-sm="row">
+                  <label class="new-event-location" on-focus="">Location</label>
+                </div>
+                <input class="geo-input" ng-autocomplete type="text" id="autocomplete" details='details' ng-model="event.location" placeholder="" required>
+              </md-input-container>
+            </div>
+
+            <!-- TIME FIELD -->
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label class="new-event-time">Time...</label>
+                <input moment-picker="dateFormatted" today="true" ng-model="event.time" format="MMMM Do YYYY, h:mm" required>
+              </md-input-container>
+              
+              <!--Price-->
+              <md-input-container class="md-block" flex-gt-sm>
+                  <label class="new-event-price" placeholder="Price">Price</label>
+                  <input class="" type="number" id="" ng-model="event.price" required>
+              </md-input-container>
+
+
+
+              <!-- NUMBER OF PEOPLE -->
+              <md-input-container class="md-block" flex-gt-sm>
+              <label class="new-event-time">Number of people</label>
+                <input type="number" minlength="1" class="" ng-model="event.desiredParticipants" required>
+              </md-input-container>
+
+            </div>
+      
+            <!-- Type -->
+            <label class="new-event-slots">Type</label><br/>
+            <md-input-container class="md-block">
+              <select name="singleSelect" ng-model="event.type">
+                <option value="Job">Job</option>
+                <option value="Class">Class</option>
+                <option value="Food">Food</option>
+                <option value="Party">Party</option>
+               <!--  <option value="Game">Game</option>
+                <option value="Art">Music and Art</option>
+                <option value="Other">Other</option> -->
+              </select>
+            </md-input-container>
+
+            <!-- Description -->
+            <md-input-container class="md-block">
+              <label class="new-event-slots">Description</label>
+              <input type="text" class="" ng-model="event.description">
+            </md-input-container>
+          </form>
+        </md-content>
+      </div>
+    </div> 
+
+    <md-dialog-actions layout="row" style="padding: 10px 0;">
+
+      <md-button ng-click="cancel()">Cancel</md-button>
+
+      <span flex></span>
+      <!-- ADD EVENT BUTTON -->
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" data-mdc-auto-init="MDCRipple add-event" style="margin-right: 25px;" ng-click="saveEvent()">Add Event</button>
+      
+    </md-dialog-actions>
+  </div>
+</md-dialog>
