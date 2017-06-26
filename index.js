@@ -133,6 +133,34 @@ app.get('/timer/:id', function(req, res) {
     res.json(200, data);
   });
 })
+
+//Get and post methods for messages on event page
+
+app.post('/message', function(req, res){
+  var newMessage = new Message ({
+    user: req.user.user,
+    event: req.body.event,
+    text: req.body.text
+  });
+  newMessage.save(function(err, newMessage){
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(newMessage);
+    }
+  });
+});
+
+app.get('/message/:eventId', function(req, res){
+  Message.find({event: req.param("eventId")}, function(err, newMessages){
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(newMessages);
+    }
+  });
+});
+
 //Get and post methods for events on app/home page
 
 app.post('/events', function(req, res){
@@ -232,6 +260,17 @@ app.get('/events', function(req, res){
   });
 });
 
+app.get('/events/:id', function(req, res){
+  Event.findOne({_id: req.param("id")}, function(err, newEvent){
+    if(err){
+      res.send({
+        error: err
+      });
+    } else {
+      res.send(newEvent);
+    }
+  });
+});
 
 //Server init to listen on port 3000 -> Needs to be altered for deployment
 app.listen(port);

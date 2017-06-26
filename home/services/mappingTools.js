@@ -19,9 +19,32 @@ angular.module('App')
         return deferred.promise;
     }
 
+
 //Get all events from the db.
   function getEvents() {
     return $http.get('/events', {contentType: 'application/json'})
+    .then(function (response) {
+      console.log('Get Successful: ', response);  
+      return response.data;
+    })
+    .catch(function (response) {
+      console.error('Get Failed', response);
+    });
+  }
+
+  function getEvent(id) {
+    return $http.get('/events/'+id, {contentType: 'application/json'})
+    .then(function (response) {
+      console.log('Get Successful: ', response);  
+      return response.data;
+    })
+    .catch(function (response) {
+      console.error('Get Failed', response);
+    });
+  }
+
+  function getMessages(id) {
+    return $http.get('/message/'+id, {contentType: 'application/json'})
     .then(function (response) {
       console.log('Get Successful: ', response);  
       return response.data;
@@ -172,6 +195,8 @@ angular.module('App')
     return {
       getCurrentPosition : getCurrentPosition,
       getEvents: getEvents,
+      getEvent: getEvent,
+      getMessages: getMessages,
       saveEvent: saveEvent,
       eventToMarker: eventToMarker,
       toggleLayer: toggleLayer,
