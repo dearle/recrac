@@ -39,14 +39,22 @@
             <p click-to-edit="event.location.address"></p>
             <!-- <p>{{ event.location.address }}</p> -->
 
-            <span>Participants</span>
+            <span>Confirmed Participants</span>
             <p style="margin: 5px 0 0;">
               <img ng-src="{{event.host.photo}}"/> 
               <img ng-src="{{event.host.photo}}"/> 
               <img ng-src="{{event.host.photo}}"/>
             </p>
-            <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">And 4 others.</p>
+            <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{event.desiredParticipants}} spots remaining!</p>
             <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
+            <div>
+              <span>Potential Participants</span>
+              <p style="margin: 5px 0 0;">
+                <img ng-src="{{event.host.photo}}"/><br/>
+                <img ng-src="{{event.host.photo}}"/><br/>
+                <img ng-src="{{event.host.photo}}"/><br/>
+              </p>
+            </div>
 
             <span>Time and Date</span>
             <p click-to-edit="event.time | date:'EEEE, MMMM d, h:mm a'"></p>
