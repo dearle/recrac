@@ -47,7 +47,7 @@ app.use(express.static(path.resolve(__dirname, './home')))
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID, 
     clientSecret:  config.FACEBOOK_APP_SECRET, 
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: "https://recrac.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'emails']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -188,6 +188,7 @@ app.post('/events', function(req, res){
 
 app.put('/confirmParticipant', function(req, res){
   User.findOne({user: req.body.participantName}, function(err, joiner){
+    console.log("A")
     if(err){
       res.status(500).send(err);
     } else {
