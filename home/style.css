@@ -231,3 +231,33 @@ comment-directive {
   width: calc(100% - 100px);
   float: left;
 }
+
+.potential-part-div {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  float: left;
+}
+
+.potential-icons {
+  background: #ff4081;
+  color: white!important;
+  position: absolute;
+  zoom: 50%;
+}
+
+.potential-icons:hover {
+  background: #bd2056;
+}
+
+.potential-icons-check {
+  
+  top: 8px;
+  left: 75px;
+}
+
+.potential-icons-delete {
+
+  top: 52px;
+  left: 75px;
+}

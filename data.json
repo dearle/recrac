@@ -20,7 +20,7 @@
   "time": "09:00:PM",
   "price": 0,
   "confirmedParticipants": [],
-  "potentialParticipants": []
+  "potentialParticipants": [{"user": "Bob Bobson", "photo": "", "email": ""}, {"user": "Bob Bobson", "photo": "", "email": ""}]
 },
 {
   "name": "Transformers Audition",
