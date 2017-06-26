@@ -65,7 +65,8 @@ passport.use(new FacebookStrategy({
           user: profile.displayName,
           picture: profile.photos[0].value,
           email: profile.emails[0].value,
-          facebook: profile._json
+          facebook: profile._json,
+          description: ""
         });
         user.save(function(err) {
           if (err) console.error(err);
@@ -168,7 +169,7 @@ app.post('/events', function(req, res){
   var newEvent = new Event ({
     name: req.body.name,
     description: req.body.description,
-    host: {user: req.user.user, photo: req.user.picture, email: req.user.email},
+    host: {user: req.user.user, photo: req.user.picture, email: req.user.email, description: req.user.description},
     type: req.body.type,
     time: req.body.time,
     price: req.body.price || 0,
@@ -185,7 +186,24 @@ app.post('/events', function(req, res){
 });
 
 
-
+app.put('/confirmParticipant', function(req, res){
+  User.findOne({user: req.body.participantName}, function(err, joiner){
+    if(err){
+      res.status(500).send(err);
+    } else {
+      var joinerObj = {$push: {confirmedParticipants: {user: joiner.user, photo: joiner.picture, email: joiner.email}},
+        {$pull: {potentialParticipants: {user: joiner.user}}}};
+      console.log(req.body);
+      Event.update({_id: req.body.eventId}, joinerObj, function(err, updatedEvent){
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(updatedEvent);
+        }
+      })
+    }
+  });
+});
 
 app.put('/events', function(req, res){
   User.findOne({_id: req.user._id}, function(err, joiner){
