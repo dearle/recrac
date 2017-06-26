@@ -25,7 +25,7 @@
         <div style="padding: 20px;">
           <div class="mdl-card__supporting-text event-details">
             
-            <h4><b>Event Details</b></h4>
+            <h2 style="margin-top: 0"><b>Event Details</b></h2>
 
             <span>Event Name</span>
             <p click-to-edit="event.name"></p>
@@ -76,7 +76,7 @@
       <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-right">
         <div style="padding: 20px 0;width: 100%;">
           <div class="mdl-card__supporting-text event-details">
-            <h4><b>Event Host</b></h4>
+            <<h2 style="margin-top: 0"><b>Event Host</b></h2>
             <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
               <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ event.host.photo }}'); background-size:cover;"></div>
             </div>
@@ -94,13 +94,15 @@
     </section>
 
     <!-- COMMENTS -->
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <h4 class="mdl-cell mdl-cell--12-col"><b>Comments</b></h4>
-        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" ng-repeat="message in messages">
+    <<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" style="">
+      <div class="mdl-card mdl-cell mdl-cell--12-col" style="">
+        <div style="padding: 0 20px">
+          <h2 style="font-size: 2em"><b>Comments</b></h2>
+          <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" ng-repeat="message in messages" style="width: 100%;margin: 0">
 
           <comment-directive></comment-directive>
 
+          </div>
         </div>
         <div layout="column" class="md-inline-form">
           <md-content layout-gt-sm="row" layout-padding>
