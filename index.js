@@ -207,46 +207,46 @@ app.put('/events', function(req, res){
 app.put('/events/:id', function(req, res){
     // Geting the event to update
   Event.findOne({_id: req.param("id")}, function(err, newEvent){
-        // Updating all the information from the event
-        // **********************************************************************
-        if(req.body.name){
-            newEvent.name = req.body.name;   
+    // Updating all the information from the event
+    // **********************************************************************
+    if(req.body.name){
+        newEvent.name = req.body.name;   
+    }
+    if(req.body.description){
+        newEvent.description = req.body.description;
+    }
+    
+    if(req.user){
+        newEvent.host = req.user.user;
+    }
+    
+    if(req.body.type){
+        newEvent.type = req.body.type;
+    }
+    
+    if(req.body.time){
+        newEvent.time = req.body.time;
+    }
+    if(req.body.price){
+        newEvent.price = req.body.price || 0;
+    }
+    if(req.body.desiredParticipants){
+        newEvent.desiredParticipants = req.body.desiredParticipants;
+    }
+    
+    if(req.body.location){
+        newEvent.location = {
+            address: req.body.location,
+            lng: 0, 
+            lat: 0
         }
-        if(req.body.description){
-            newEvent.description = req.body.description;
-        }
-        
-        if(req.user){
-            newEvent.host = req.user.user;
-        }
-        
-        if(req.body.type){
-            newEvent.type = req.body.type;
-        }
-        
-        if(req.body.time){
-            newEvent.time = req.body.time;
-        }
-        if(req.body.price){
-            newEvent.price = req.body.price || 0;
-        }
-        if(req.body.desiredParticipants){
-            newEvent.desiredParticipants = req.body.desiredParticipants;
-        }
-        
-        if(req.body.location){
-            newEvent.location = {
-                address: req.body.location,
-                lng: 0, 
-                lat: 0
-            }
-        }
-        // **********************************************************************
-        
-        // Saving the changed fields
-        newEvent.save(function(err, updatedEvent){
-            res.send(updatedEvent);
-        });
+    }
+    // **********************************************************************
+    
+    // Saving the changed fields
+    newEvent.save(function(err, updatedEvent){
+        res.send(updatedEvent);
+    });
   });
 });
 
@@ -269,6 +269,25 @@ app.get('/events/:id', function(req, res){
     } else {
       res.send(newEvent);
     }
+  });
+});
+
+app.put('/user/:id', function(req, res){ //email: email, number:number, description: description
+    // Geting the event to update
+  User.findOne({"facebook.id": req.param("id")}, function(err, newUser){
+    console.log("newUser on line 278 is ", newUser);
+    // Updating all the information from the event
+    // **********************************************************************
+    newUser.email = req.body.email;
+    newUser.number = req.body.number;
+    newUser.description = req.body.description;
+    // **********************************************************************
+    
+    // Saving the changed fields
+    newUser.save(function(err, updatedUser){
+      if (err) console.error(err);
+      res.send(updatedUser);
+    });
   });
 });
 

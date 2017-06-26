@@ -29,7 +29,7 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
   .state('app.dash', {
     url: "/dashboard",
     templateUrl: './templates/app.dash.html',
-    controller: function ($scope, userService, mappingTools) {
+    controller: function ($scope, $http, userService, mappingTools) {
       $scope.events = [];
       mappingTools.getEvents().then(function(data) {
         $scope.events = data;
@@ -48,9 +48,18 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
           })
         }
       }
-    }
-  })
-
+      $scope.updateUserInfo = function(id, email, number, description) {
+        $http.put("/user/"+id, {email: email, number:number, description: description}, {contentType: 'application/json'})
+          .then(function (response) {
+            console.log('Put Successful: ', response);  
+            return response.data;
+          })
+          .catch(function (response) {
+           console.error('Put Failed', response);
+           });
+      }
+    }  
+  })    
   .state('app.event', {
     url: "/events/:eventId",
     params: {event: null},
