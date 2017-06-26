@@ -7,7 +7,7 @@
   "desiredParticipants": 2,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": [],
+  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
   "potentialParticipants": []
 },
 {
@@ -19,8 +19,8 @@
   "desiredParticipants": 3,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": [],
-  "potentialParticipants": [{"user": "Bob Bobson", "photo": "", "email": ""}, {"user": "Bob Bobson", "photo": "", "email": ""}]
+  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
+  "potentialParticipants": []
 },
 {
   "name": "Transformers Audition",
@@ -67,7 +67,7 @@
   "desiredParticipants": 1,
   "time": "10:00:AM",
   "price": 25,
-  "confirmedParticipants": [],
+  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
   "potentialParticipants": []
 },
 {
@@ -91,6 +91,6 @@
   "desiredParticipants": 10,
   "time": "08:00:PM",
   "price": 0,
-  "confirmedParticipants": [],
+  "confirmedParticipants": [{"user": "Bob Bobson", "photo": "", "email": ""}],
   "potentialParticipants": []
 }]

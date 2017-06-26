@@ -9,7 +9,7 @@ angular.module('App')
             '</div>' +
             '<div ng-show="view.editorEnabled">' +
                 '<input type="text" class="small-12.columns" ng-model="view.editableValue">' +
-                '<a class="button tiny" href="#" ng-click="save()">Save</a>' +
+                '<a class="button tiny"  ng-click="save()">Save</a>' +
                 ' or ' +
                 '<a class="button tiny" ng-click="disableEditor()">cancel</a>' +
             '</div>' +
