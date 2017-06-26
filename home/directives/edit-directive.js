@@ -1,6 +1,6 @@
 angular.module('App')
 // .controller("EditCtrl", 
-.directive("clickToEdit", function () {
+  .directive('clickToEdit', function () {
     var editorTemplate = '' +
         '<div class="click-to-edit">' +
             '<div ng-hide="view.editorEnabled">' +
@@ -16,40 +16,40 @@ angular.module('App')
         '</div>';
 
     return {
-        restrict: "A",
-        replace: true,
-        template: editorTemplate,
-        scope: {
-            value: "=clickToEdit",
-        },
+      restrict: 'A',
+      replace: true,
+      template: editorTemplate,
+      scope: {
+        value: '=clickToEdit',
+      },
 
-        link: function (scope, element, attrs) {
-            scope.view = {
-                editableValue: scope.value,
-                editorEnabled: false
-            };
+      link: function (scope, element, attrs) {
+        scope.view = {
+          editableValue: scope.value,
+          editorEnabled: false
+        };
 
-            scope.enableEditor = function () {
-                scope.view.editorEnabled = true;
-                scope.view.editableValue = scope.value;
-                setTimeout(function () {
-                    element.find('input')[0].focus();
-                    //element.find('input').focus().select(); // w/ jQuery
-                });
-            };
+        scope.enableEditor = function () {
+          scope.view.editorEnabled = true;
+          scope.view.editableValue = scope.value;
+          setTimeout(function () {
+            element.find('input')[0].focus();
+            //element.find('input').focus().select(); // w/ jQuery
+          });
+        };
 
-            scope.disableEditor = function () {
-                scope.view.editorEnabled = false;
-            };
+        scope.disableEditor = function () {
+          scope.view.editorEnabled = false;
+        };
 
-            scope.save = function () {
-                scope.value = scope.view.editableValue;
-                scope.disableEditor();
-            };
-            // scope.save = function() {
-            // mappingTools.saveEvent($scope.event, $scope.id).then(function() {
-            //   alert("TEST SAVE");
-            // }
-        }
+        scope.save = function () {
+          scope.value = scope.view.editableValue;
+          scope.disableEditor();
+        };
+        // scope.save = function() {
+        // mappingTools.saveEvent($scope.event, $scope.id).then(function() {
+        //   alert("TEST SAVE");
+        // }
+      }
     };
-});
+  });

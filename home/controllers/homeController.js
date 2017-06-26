@@ -1,51 +1,51 @@
 angular.module('App')
-.controller('HomeController', ['$scope', '$rootScope', '$state','userService', 'searchServices', 'mappingTools', 'Data',
-function ($scope, $rootScope, $state, userService, searchServices, mappingTools, Data) {
+  .controller('HomeController', ['$scope', '$rootScope', '$state', 'userService', 'searchServices', 'mappingTools', 'Data',
+    function ($scope, $rootScope, $state, userService, searchServices, mappingTools, Data) {
 
-  var markers = {};
+      var markers = {};
 
-  userService //authentication
-    .authenticate()
-    .then(function (user) { $scope.user = user });
+      userService //authentication
+        .authenticate()
+        .then(function (user) { $scope.user = user; });
 
-  $scope.layers = mappingTools.Layer; //map set up tiles from mapbox
-  $scope.defaults = { scrollWheelZoom: false
-                      } //map set up turn off scroll wheel zoom.
-  $scope.currentLoc = mappingTools.defaultLoc; //map set up deault location.
+      $scope.layers = mappingTools.Layer; //map set up tiles from mapbox
+      $scope.defaults = { scrollWheelZoom: false
+      }; //map set up turn off scroll wheel zoom.
+      $scope.currentLoc = mappingTools.defaultLoc; //map set up deault location.
 
-  mappingTools //get current loc from browser
-    .getCurrentPosition().then((position) => {
-      $scope.currentLoc = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-                zoom: 12
-      } 
-      markers['curr'] = { //put a marker down at the curr loc't
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        message: "You are here!",
-        icon: { 
-          type: 'extraMarker',
-          icon: 'fa-star',
-          markerColor: '#f00',
-          prefix: 'fa',
-          shape: 'circle'
-        },
-        focus: true
-      }         
+      mappingTools //get current loc from browser
+        .getCurrentPosition().then((position) => {
+          $scope.currentLoc = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            zoom: 12
+          }; 
+          markers['curr'] = { //put a marker down at the curr loc't
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            message: 'You are here!',
+            icon: { 
+              type: 'extraMarker',
+              icon: 'fa-star',
+              markerColor: '#f00',
+              prefix: 'fa',
+              shape: 'circle'
+            },
+            focus: true
+          };         
         });
 
-  var markers = mappingTools.eventToMarker(Data); //get markers from database
+      var markers = mappingTools.eventToMarker(Data); //get markers from database
 
-  $scope.markers = markers; //add them to the scope
+      $scope.markers = markers; //add them to the scope
   
-  $scope.eventData = Data;
+      $scope.eventData = Data;
 
-  $scope.filterObj = searchServices.filterObj;
+      $scope.filterObj = searchServices.filterObj;
 
-  $scope.filterByType = searchServices.filterByType;
+      $scope.filterByType = searchServices.filterByType;
 
-  $scope.nofilter = searchServices.nofilter;
+      $scope.nofilter = searchServices.nofilter;
 
-}])
+    }]);
 
