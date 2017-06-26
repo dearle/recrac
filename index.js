@@ -191,6 +191,7 @@ app.put('/confirmParticipant', function(req, res){
     if(err){
       res.status(500).send(err);
     } else {
+      console.log("A")
       var joinerObj = {$push: {confirmedParticipants: {user: joiner.user, photo: joiner.picture, email: joiner.email}},
         $pull: {potentialParticipants: {user: joiner.user}}};
       console.log(req.body);
