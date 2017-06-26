@@ -80,9 +80,6 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         })
       }
       
-      $scope.showData = function (participant) {
-        console.log(participant);
-      }
 
       $scope.saveMessage = function() {
         $http.post("/message", {event: $scope.id, user:"", text: $scope.message.text}, {contentType: 'application/json'})
@@ -95,7 +92,7 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
       }
 
       $scope.showData = function(eventId, participantName ) {
-        $http.put("/confirmParticipants", {eventId:eventId, participantName:participantName }, {contentType: 'application/json'})
+        $http.put("/confirmParticipant", {eventId:eventId, participantName:participantName }, {contentType: 'application/json'})
         .then(function (response) {
           console.log('Put Successful: ', response);
         })

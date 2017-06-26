@@ -7,7 +7,7 @@
   "desiredParticipants": 2,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
+  "confirmedParticipants": [{"user": "David R Earle", "photo": "", "email": ""}],
   "potentialParticipants": []
 },
 {
@@ -19,7 +19,7 @@
   "desiredParticipants": 3,
   "time": "09:00:PM",
   "price": 0,
-  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
+  "confirmedParticipants": [{"user": "David R Earle", "photo": "", "email": ""}],
   "potentialParticipants": []
 },
 {
@@ -67,7 +67,7 @@
   "desiredParticipants": 1,
   "time": "10:00:AM",
   "price": 25,
-  "confirmedParticipants": [{"user": "William Damon", "photo": "", "email": ""}],
+  "confirmedParticipants": [{"user": "David R Earle", "photo": "", "email": ""}],
   "potentialParticipants": []
 },
 {
