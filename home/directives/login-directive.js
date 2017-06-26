@@ -8,6 +8,7 @@ angular.module('App')
         .authenticate()
         .then(function (user) { 
           $scope.user = user 
+        });
     },
     templateUrl: '../templates/login.html'
   };

@@ -1,6 +1,6 @@
 angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAutocomplete', 'ui-leaflet', 'moment-picker' ])
 .config(function($stateProvider, $urlRouterProvider) { 
-  $urlRouterProvider.otherwise('/login');
+  // $urlRouterProvider.otherwise('/login');
   $stateProvider
 
   //Public state:
@@ -33,10 +33,21 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
       $scope.events = [];
       mappingTools.getEvents().then(function(data) {
         $scope.events = data;
-      })
+      });
       userService
         .authenticate()
-        .then(function (user) { $scope.user = user });
+        .then(function (user) { 
+          $scope.user = user 
+        });
+      $scope.participantMatch = function(username) {
+        return function(event){
+          event.confirmedParticipants.forEach(function(participant){
+            if (participant.user === username) {
+              return true
+            }
+          })
+        }
+      }
     }
   })
 

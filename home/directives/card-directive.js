@@ -2,7 +2,6 @@ angular.module('App')
 .directive('cardDirective', ['$http', '$state', function($http) {
   return {
     restrict: 'E',
-
     controller: function ($scope, $http, $state) {
         $scope.joinEventHandler = function(joinedEvent) {
             if ($scope.user.data.user.user === joinedEvent.host) {
@@ -24,6 +23,9 @@ angular.module('App')
             }
         };
 
+       $scope.openEventDetails = function(clickedEvent) {
+         $state.go("app.event", {eventId: clickedEvent._id, event: clickedEvent});
+        }
     },
     templateUrl: '../templates/card.html'
   };
