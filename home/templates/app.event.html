@@ -46,12 +46,19 @@
             <div>
               <span>Potential Participants</span>
               <p style="margin: 5px 0 0;">
-                <img ng-src="{{event.host.photo}}"/><br/>
-                <img ng-src="{{event.host.photo}}"/><br/>
-                <img ng-src="{{event.host.photo}}"/><br/>
+              <div class="potential-part-div" ng-repeat="participant in event.potentialParticipants" >
+                <img ng-src="{{participant.photo}}"/><br/>
+                <md-button class="md-icon-button md-accent potential-icons potential-icons-check" ng-click="showData(participant)">
+                  <i class="material-icons">&#xE876;</i>
+                </md-button>
+                <md-button class="md-icon-button md-accent potential-icons potential-icons-delete">
+                  <i class="material-icons">&#xE92B;</i>
+                </md-button>
+              </div>
+
               </p>
             </div>
-
+            <div style="clear: both">
             <span>Time and Date</span>
             <p click-to-edit="event.time | date:'EEEE, MMMM d, h:mm a'"></p>
             <!-- <p>{{ event.time | date:'EEEE, MMMM d, h:mm a'}}</p> -->
@@ -63,6 +70,7 @@
             <span>Type</span>
             <p click-to-edit="event.type"></p>
             <!-- <p>{{event.type}}</p> -->
+            </div>
 
           </div>
         </div>

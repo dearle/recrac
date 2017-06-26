@@ -65,6 +65,10 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         })
       }
       
+      $scope.showData = function (participant) {
+        console.log(participant);
+      }
+
       $scope.saveMessage = function() {
         $http.post("/message", {event: $scope.id, user:"", text: $scope.message.text}, {contentType: 'application/json'})
         .then(function (response) {
