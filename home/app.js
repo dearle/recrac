@@ -1,6 +1,6 @@
 angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAutocomplete', 'ui-leaflet', 'moment-picker' ])
 .config(function($stateProvider, $urlRouterProvider) { 
-  // $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/login');
   $stateProvider
 
   //Public state:
