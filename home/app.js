@@ -39,15 +39,6 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         .then(function (user) { 
           $scope.user = user 
         });
-      $scope.participantMatch = function(username) {
-        return function(event){
-          event.confirmedParticipants.forEach(function(participant){
-            if (participant.user === username) {
-              return true
-            }
-          })
-        }
-      }
       $scope.updateUserInfo = function(id, email, number, description) {
         $http.put("/user/"+id, {email: email, number:number, description: description}, {contentType: 'application/json'})
           .then(function (response) {
@@ -143,13 +134,6 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
       return user !== undefined && user.isAuthenticated; 
       }
     }
-    //logout: function(){
-//         return $http.get("/logout")
-//           .then(function(response) {
-//             console.log('logout success', reponse)
-//             //res.redirect('/login');
-//           })
-//       }
 })
 
 
