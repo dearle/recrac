@@ -94,8 +94,8 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         });
       }
 
-      $scope.showData = function(eventId, participantId ) {
-        $http.put("/confirmParticipants", {eventId:eventId, participantId:participantId }, {contentType: 'application/json'})
+      $scope.showData = function(eventId, participantName ) {
+        $http.put("/confirmParticipants", {eventId:eventId, participantName:participantName }, {contentType: 'application/json'})
         .then(function (response) {
           console.log('Put Successful: ', response);
         })
