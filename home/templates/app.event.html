@@ -3,9 +3,9 @@
   <div layout="row" class="page-header"></div>
 
   <!-- EDIT BUTTON -->
-  <div style="margin: 10px;float: right">
+  <!-- <div style="margin: 10px;float: right">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect join-button" data-mdc-auto-init="MDCRipple" style="margin:0 auto" ng-click="save()">Save Event</button>
-  </div>
+  </div> -->
 </div>
 
 <main class="mdl-layout__tab-panel is-active">
@@ -21,15 +21,23 @@
     <section class="section--center mdl-grid mdl-grid--no-spacing event-block-container" style="">
 
       <!-- EVENT DETAILS -->
-      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-left" style="" >
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-left" >
         <div style="padding: 20px;">
           <div class="mdl-card__supporting-text event-details">
+            
             <h4><b>Event Details</b></h4>
+
+            <span>Event Name</span>
+            <p click-to-edit="event.name"></p>
+            <!-- <p>{{event.name}}</p> -->
+
             <span>Description</span>
-            <p>{{ event.description }}</p>
+            <p click-to-edit="event.description"></p>
+            <!-- <p>{{ event.description }}</p> -->
 
             <span>Location</span>
-            <p>{{ event.location.address }}</p>
+            <p click-to-edit="event.location.address"></p>
+            <!-- <p>{{ event.location.address }}</p> -->
 
             <span>Participants</span>
             <p style="margin: 5px 0 0;">
@@ -41,10 +49,17 @@
             <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
 
             <span>Time and Date</span>
-            <p>{{ event.time }}</p>
+            <p click-to-edit="event.time | date:'EEEE, MMMM d, h:mm a'"></p>
+            <!-- <p>{{ event.time | date:'EEEE, MMMM d, h:mm a'}}</p> -->
 
             <span>Price</span>
-            <p>{{event.price}}</p>
+            $<p click-to-edit="event.price"></p>
+            <!-- <p>{{event.price}} $</p> -->
+
+            <span>Type</span>
+            <p click-to-edit="event.type"></p>
+            <!-- <p>{{event.type}}</p> -->
+
           </div>
         </div>
       </section>
@@ -73,23 +88,21 @@
     <!-- COMMENTS -->
     <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
       <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" ng-repeat="comment in comments">
-
-          <!-- COMMENT TITLE -->
-          <h4 class="mdl-cell mdl-cell--12-col" ng-repeat="comment in comments"><b>Comments</b></h4>
+        <h4 class="mdl-cell mdl-cell--12-col"><b>Comments</b></h4>
+        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" ng-repeat="message in messages">
 
           <comment-directive></comment-directive>
 
         </div>
         <div layout="column" class="md-inline-form">
           <md-content layout-gt-sm="row" layout-padding>
-            <div>
+            <div style="width: 100%">
               <form name="eventComment">
-                <div layout-gt-xs="row">
-                  <md-input-container class="md-block">
-                     <textarea ng-model="message.text" md-maxlength="150" rows="5" md-select-on-focus style="width:99%"> </textarea>
+                <div layout-gt-lg="row">
+                  <md-input-container class="md-block" style="margin-bottom: 0px;">
+                     <textarea ng-model="message.text" md-maxlength="140" rows="2" md-select-on-focus style="width:99%"> </textarea>
                   </md-input-container>
-                  <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Add Comment</a>
+                  <a ng-click="saveMessage()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Add Comment</a>
                 </div>
               </form>
             </div>
