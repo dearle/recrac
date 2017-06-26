@@ -39,7 +39,9 @@ angular.module('App')
           return;
         }
         console.log(success);
+
         $mdDialog.cancel();
+
       })
     };
   }
