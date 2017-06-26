@@ -9,16 +9,20 @@
 
         <!-- PROFILE PHOTO and stuff -->
         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp event-block-right" style="max-width:500px" >
-          <div style="padding: 20px;">
+          <div style="padding: 20px; width: 100%;">
             <div class="mdl-card__supporting-text event-details">
               <div class="user-profile" style="width:100%; background:black">
-                <img ng-src="{{user.data.user.facebook.picture.data.url}}"/>
-              </div>
-              <br/>
-              <span>School</span>
-              <p>Hack Reactor, NY</p>
-              <span>Work</span>
-              <p>bidyourtime</p>
+                <img ng-src="{{user.data.user.picture}}"/>
+              </div><br/>
+
+              <span>Email</span>
+              <p click-to-edit="user.data.user.email"></p>
+              <!-- <p>{{user.data.user.email}}</p> -->
+
+              <span>Phone Number</span>
+              <p click-to-edit="user.data.user.number"></p>
+              <!-- <p>{{user.data.user.number}}</p> -->
+
             </div>
           </div>
         </section>
@@ -31,7 +35,7 @@
                 <h2 style="margin-top: 0"><b>Hello, I'm {{user.data.user.user}}</b></h2>
                 <h4><b>New York, NY</b></h4>
                 <span>Description</span>
-                <p>I like green eggs and ham! I do! I like them, Sam-I-am! And I would eat them in a boat! And I would eat them with a goat. And I will eat them in the rain. And in the dark. And on a train. And in a car. And in a tree. They are so good so good you see!</p>
+                <p click-to-edit="user.description">I like green eggs and ham! I do! I like them, Sam-I-am! And I would eat them in a boat! And I would eat them with a goat. And I will eat them in the rain. And in the dark. And on a train. And in a car. And in a tree. They are so good so good you see!</p>
               </div>
             </div>
           </div>
