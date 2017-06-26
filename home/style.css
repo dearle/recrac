@@ -1,8 +1,12 @@
-h1 {
-    font-family: "Futura","Helvetica";
-    font-weight: 600;
-    text-transform: lowercase;
-    letter-spacing: -.05em;
+h1, h2 {
+  font-family: "Futura","Helvetica";
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -.05em;
+}
+
+h2 {
+  font-size: 2em;
 }
 
 .custom-nav{
@@ -201,4 +205,24 @@ md-input-container.md-input-focused label {
 
 .card-text p {
   margin: 0;
+}
+
+
+comment-directive {
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+}
+
+.comment-text {
+  float: left;
+  padding-top: 0!important;
+}
+
+
+.comment-text p {
+  margin: 0!important;
+}
+.comment-photo {
+  width: calc(100% - 100px);
+  float: left;
 }
