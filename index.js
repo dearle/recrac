@@ -111,10 +111,6 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   });
 
-
-
-
-
 app.get('/account', function(req, res){
    if (req.isAuthenticated()) { 
      res.send({user : req.user}); 
@@ -122,6 +118,11 @@ app.get('/account', function(req, res){
      res.sendStatus(404);
    }
  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 app.get('/error', function(req, res) {
   res.sendStatus(404);
