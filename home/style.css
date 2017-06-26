@@ -1,3 +1,7 @@
+ .angular-leaflet-map {
+    z-index:60;
+  }
+  
 h1, h2 {
   font-family: "Futura","Helvetica";
   font-weight: 600;
