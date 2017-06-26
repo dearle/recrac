@@ -5,7 +5,7 @@ angular.module('App')
 
     controller: function ($scope, $http, $state) {
         $scope.joinEventHandler = function(joinedEvent) {
-            if ($scope.user.data.user.user === joinedEvent.host) {
+            if ($scope.user.data.user.user === joinedEvent.host.user) {
                 console.log($scope.user.data.user.user, ' cannot join an event they are hosting');
             } 
             else if (joinedEvent.confirmedParticipants.concat(joinedEvent.potentialParticipants)

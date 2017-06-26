@@ -5,7 +5,7 @@ const geocodeURL = 'http://maps.google.com/maps/api/geocode/json?address=';
 var eventSchema = new mongoose.Schema({
   name: String,
   description: String,
-  host: String,
+  host: {user: String, photo: String, email: String},
   type: String,
   // location: { type: String, coordinates: [Number] },
   location: { address: String, lng: Number, lat: Number },
