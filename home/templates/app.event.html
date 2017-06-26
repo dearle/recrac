@@ -37,18 +37,18 @@
 
             <span>Confirmed Participants</span>
             <p style="margin: 5px 0 0;">
-              <img ng-src="{{event.host.photo}}"/> 
-              <img ng-src="{{event.host.photo}}"/> 
               <img ng-src="{{event.host.photo}}"/>
+              <img ng-repeat="participant in event.confirmedParticipants" ng-src="{{participant.photo}}"/>
             </p>
+            
             <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{event.desiredParticipants}} spots remaining!</p>
             <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
-            <div>
+            <div ng-show="event.host === user.data.user.user">
               <span>Potential Participants</span>
               <p style="margin: 5px 0 0;">
               <div class="potential-part-div" ng-repeat="participant in event.potentialParticipants" >
                 <img ng-src="{{participant.photo}}"/><br/>
-                <md-button class="md-icon-button md-accent potential-icons potential-icons-check" ng-click="showData(participant)">
+                <md-button class="md-icon-button md-accent potential-icons potential-icons-check" ng-click="showData(event._id, participant.user)">
                   <i class="material-icons">&#xE876;</i>
                 </md-button>
                 <md-button class="md-icon-button md-accent potential-icons potential-icons-delete">

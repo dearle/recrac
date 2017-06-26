@@ -56,7 +56,11 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
     params: {event: null},
     templateUrl: './templates/app.event.html',
     controller: function ($scope, $stateParams, userService, $state, mappingTools, $http) {
-      
+      userService
+        .authenticate()
+        .then(function (user) { 
+          $scope.user = user 
+        });
       $scope.id = $stateParams.eventId;
       //$scope.event = $state.params.event
       $scope.event = {};
@@ -84,6 +88,16 @@ angular.module('App', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngAuto
         $http.post("/message", {event: $scope.id, user:"", text: $scope.message.text}, {contentType: 'application/json'})
         .then(function (response) {
           console.log('Post Successful: ', response);  
+        })
+        .catch(function (err) {
+          console.error('Post Failed: ', err);
+        });
+      }
+
+      $scope.showData = function(eventId, participantId ) {
+        $http.put("/confirmParticipants", {eventId:eventId, participantId:participantId }, {contentType: 'application/json'})
+        .then(function (response) {
+          console.log('Put Successful: ', response);
         })
         .catch(function (err) {
           console.error('Post Failed: ', err);
