@@ -45,7 +45,7 @@
 
             <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{event.desiredParticipants}} spots remaining!</p>
             <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
-            <div ng-show="event.host.user === user.data.user.user">
+            <div> <!-- ng-show="event.host.user === user.data.user.user" -->
               <span>Potential Participants</span>
               <p style="margin: 5px 0 0;">
               <div class="potential-part-div" ng-repeat="participant in event.potentialParticipants" >
@@ -93,7 +93,7 @@
               <p>{{event.host.user}}</p>
 
               <span>About Me</span>
-              <p>{{event.host.description}}</p>
+              <p>A little bit about yourself</p>
 
             </div>
           </div>
