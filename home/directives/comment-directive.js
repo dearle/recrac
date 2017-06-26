@@ -1,8 +1,8 @@
 angular.module('App')
-.directive('commentDirective', function() {
-  return {
-    restrict: 'E',
-    template: `
+  .directive('commentDirective', function() {
+    return {
+      restrict: 'E',
+      template: `
               <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                 <div class="section__circle-container__circle mdl-color--primary comment-photo" style="background:url('{{ event.user.data.user.picture }}'); background-size:cover;"></div>
               </div>
@@ -11,5 +11,5 @@ angular.module('App')
               </div>
               `
 
-  };
-});
+    };
+  });

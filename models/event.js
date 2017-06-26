@@ -16,9 +16,9 @@ var eventSchema = new mongoose.Schema({
   potentialParticipants: [{user: String, photo: String, email: String}]
 });
 
-eventSchema.pre('save', function(next){
+eventSchema.pre('save', function(next) {
   request(geocodeURL + this.location.address, (err, response, body) => {
-    if (err){
+    if (err) {
       console.error(err);
     } else {
       var locationObj = JSON.parse(body).results[0];
