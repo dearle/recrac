@@ -1,7 +1,7 @@
 [{
   "name": "Bob's Birthday",
   "description": "Come have some fun. BYOB",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Party",
   "location": { "address": "369 Lexington Ave, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 2,
@@ -13,7 +13,7 @@
 {
   "name": "Pasta Party",
   "description": "Come eat pasta. BYOB",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Food",
   "location": { "address": "200 Lexington Ave, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 3,
@@ -25,7 +25,7 @@
 {
   "name": "Transformers Audition",
   "description": "This is an audition for the 400th Transformers movie",
-  "host": "Mike Bay",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Job",
   "location": { "address": "562 West Broadway, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 1,
@@ -37,7 +37,7 @@
 {
   "name": "Extras for Suits Episode",
   "description": "Come be in the background of a TV show",
-  "host": "Suits co.",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Job",
   "location": { "address": "562 Madison Avenue, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 10,
@@ -49,7 +49,7 @@
 {
   "name": "Tennis Lesson",
   "description": "Come improve your serve",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Class",
   "location": { "address": "150 Madison Avenue, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 2,
@@ -61,7 +61,7 @@
 {
   "name": "Piano Lesson",
   "description": "Come stroke some keys",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Class",
   "location": { "address": "100 Lexington Ave, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 1,
@@ -73,7 +73,7 @@
 {
   "name": "BBQ/Block Party",
   "description": "Come eat and party. BYOB",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Food",
   "location": { "address": "150 Fifth Avenue, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 10,
@@ -85,7 +85,7 @@
 {
   "name": "Javascript Intro Class",
   "description": "Come hack",
-  "host": "Bob Bobson",
+  "host": {"user": "Bob Bobson", "photo": "", "email": ""},
   "type": "Class",
   "location": { "address": "150 Third Avenue, New York, NY, United States", "lng": 0, "lat": 0 },
   "desiredParticipants": 10,

@@ -41,9 +41,9 @@
 
             <span>Participants</span>
             <p style="margin: 5px 0 0;">
-              <img ng-src="{{user.data.user.picture}}"/> 
-              <img ng-src="{{user.data.user.picture}}"/> 
-              <img ng-src="{{user.data.user.picture}}"/>
+              <img ng-src="{{event.host.photo}}"/> 
+              <img ng-src="{{event.host.photo}}"/> 
+              <img ng-src="{{event.host.photo}}"/>
             </p>
             <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">And 4 others.</p>
             <!-- Replace above <p style="margin: 0 0 10px 0;font-style: italic;font-size: 0.9em;">{{ event.confirmedParticipants }} out of {{ event.desiredParticipants }} </p> -->
@@ -70,11 +70,11 @@
           <div class="mdl-card__supporting-text event-details">
             <h4><b>Event Host</b></h4>
             <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ user.data.user.picture }}'); background-size:cover;"></div>
+              <div class="section__circle-container__circle mdl-color--primary" style="background:url('{{ event.host.photo }}'); background-size:cover;"></div>
             </div>
             <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone event-details">
               <span>Name</span>
-              <p>{{event.host}}</p>
+              <p>{{event.host.user}}</p>
 
               <span>About Me</span>
               <p>A little bit about yourself</p>

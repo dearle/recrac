@@ -48,7 +48,7 @@
 
         <div class='md-padding' layout="row" style="text-align: center; padding:0">
           <div layout="row" flex layout-wrap >
-            <div class="parent" layout="column" ng-repeat="event in events | filter:{host: user.data.user.user }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
+            <div class="parent" layout="column" ng-repeat="event in events | filter:{host: {user: user.data.user.user} }" flex="50" flex-xs="100" layout-wrap style="margin-bottom:40px">
               <card-directive></card-directive>
             </div>
           </div>

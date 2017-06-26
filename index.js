@@ -167,7 +167,7 @@ app.post('/events', function(req, res){
   var newEvent = new Event ({
     name: req.body.name,
     description: req.body.description,
-    host: req.user.user,
+    host: {user: req.user.user, photo: req.user.picture, email: req.user.email},
     type: req.body.type,
     time: req.body.time,
     price: req.body.price || 0,
