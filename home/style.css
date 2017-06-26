@@ -56,8 +56,35 @@ h1 {
   padding-left: 10px;
 }
 
-.page-header{
-  background: url("http://i.imgur.com/BnplV4x.jpg");
+.page-header-Job{
+  background: url("./pic/job header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Food{
+  background: url("./pic/food header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Class{
+  background: url("./pic/class header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 100%;
+  height: 300px;
+  width: 100%;
+}
+
+.page-header-Party{
+  background: url("./pic/party header.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 100%;
