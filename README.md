@@ -1,6 +1,6 @@
 # bidyourtime
 
-> This was a 
+> A social network / marketplace app featuring local events.
 
 ## Team
 
